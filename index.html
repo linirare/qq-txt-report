@@ -6,55 +6,77 @@
 <title>📊 QQ修仙群聊 · 开服首日分析报告</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#1f2937;padding:10px}
-.container{max-width:960px;margin:0 auto}
-.header{background:linear-gradient(135deg,#fff,#f0f4ff,#e8eefd);border-radius:16px;padding:24px 16px;margin:8px 0 14px;text-align:center;border:1px solid rgba(26,86,219,0.15)}
-.header h1{font-size:1.4em;color:#1a56db;margin-bottom:4px}
-.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
-.sc{background:#fff;border-radius:12px;padding:14px 6px;text-align:center;border:1px solid rgba(26,86,219,0.1)}
-.sc .n{font-size:1.5em;font-weight:700}
-.se{background:#fff;border-radius:14px;padding:16px 14px;margin-bottom:12px;border:1px solid rgba(26,86,219,0.08)}
-.se h2{font-size:1.1em;color:#1f2937;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(26,86,219,0.12)}
-.cg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:640px){.sg{grid-template-columns:repeat(2,1fr)}.cg{grid-template-columns:1fr}}
-.tc{border-radius:10px;padding:12px;margin-bottom:8px;border-left:4px solid;cursor:pointer}
-.tc:hover{background:#f8faff}
-.tc .tt{font-size:0.95em;font-weight:600}
-.tc .desc{color:#4b5563;font-size:0.82em;line-height:1.6;margin:6px 0}
-.fb{padding:10px;border-bottom:1px solid rgba(26,86,219,0.06);cursor:pointer}
-.fb:hover{background:#f8faff}
-.ri{margin-bottom:10px}
-.ri .rt{font-size:0.85em;font-weight:500;cursor:pointer}
-.ri .rd{font-size:0.78em;color:#6b7280;background:#fff;border-radius:6px;padding:6px 8px;margin:4px 0}
-.pg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media(max-width:640px){.pg{grid-template-columns:1fr}}
-.pc{background:#fafbfc;border-radius:8px;padding:12px 14px;border:1px solid #eef1f5;border-left:4px solid}
-.pc .pn{font-weight:600;font-size:0.85em}
-.pc .pd{color:#5a6a7a;font-size:0.78em;line-height:1.5}
-.ig{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.tg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.ti{background:#fafbfc;border-radius:8px;padding:10px;border:1px solid #eef1f5}
-.ti .tl{font-size:0.78em;font-weight:600;color:#2980b9}
-.cv{background:#fafbfc;border-radius:6px;padding:8px;margin-bottom:6px}
-.cv .lb{font-size:0.78em;font-weight:600;margin-bottom:4px}
-.sn{display:none;margin-top:6px}
-.sn.on{display:block}
-.arr{font-size:12px;color:#6b7280;margin-left:4px;transition:transform 0.2s;display:inline-block}
-.arr.rt{transform:rotate(90deg)}
-.footer{text-align:center;padding:20px;color:#9ca3af;font-size:0.78em}
-.kw-sec{margin-bottom:16px}
-.kw-sec h3{font-size:0.88em;margin-bottom:8px;cursor:pointer;padding:4px 0}
-.kw-sec h3:hover{opacity:0.8}
-.kw-bar{display:flex;align-items:center;gap:6px;margin:2px 0}
-.kw-bar .nm{width:48px;font-size:0.78em;color:#374151;text-align:right;flex-shrink:0}
-.kw-bar .bg{flex:1;height:14px;background:#eef1f5;border-radius:7px;overflow:hidden}
-.kw-bar .fl{height:100%;border-radius:7px;transition:width 0.3s}
-.kw-bar .ct{width:28px;font-size:0.75em;color:#6b7280;text-align:right}
-.pi{cursor:pointer;padding:4px 8px;margin:2px 0;border-radius:4px;display:flex;justify-content:space-between;font-size:0.82em;background:#fafbfc}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#1f2937;padding:12px}
+.container{max-width:900px;margin:0 auto}
+/* Header */
+.hd{background:linear-gradient(135deg,#fff,#f0f4ff,#e8eefd);border-radius:16px;padding:28px 16px 20px;margin:0 0 16px;text-align:center;border:1px solid rgba(26,86,219,0.12)}
+.hd h1{font-size:1.3em;color:#1a56db}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 0}
+.sc{background:#fff;border-radius:12px;padding:14px 4px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.sc .n{font-size:1.4em;font-weight:700;color:#1a56db}
+@media(max-width:640px){.sg{grid-template-columns:repeat(2,1fr)}}
+/* Section cards */
+.sec{background:#fff;border-radius:14px;padding:18px 16px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+.sec h2{font-size:1.05em;color:#1f2937;padding-bottom:10px;margin-bottom:14px;border-bottom:2px solid #eef1f5}
+/* Topic item */
+.ti{border-radius:10px;padding:14px;margin-bottom:8px;border-left:4px solid;cursor:pointer;transition:background 0.15s}
+.ti:hover{background:#f8faff}
+.ti .tt{font-size:0.92em;font-weight:600;margin-bottom:4px}
+.ti .td{color:#4b5563;font-size:0.82em;line-height:1.7}
+/* Feedback item */
+.fb{padding:12px 0;border-bottom:1px solid #eef1f5;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.fb:last-child{border:none}
+.fb:hover{background:#fafbfc;margin:0 -8px;padding:12px 8px;border-radius:8px}
+/* Risk/Good item */
+.ri{background:#fafbfc;border-radius:8px;padding:12px;margin-bottom:8px}
+.ri .rt{font-size:0.84em;font-weight:500;cursor:pointer;margin-bottom:4px}
+.ri .rd{font-size:0.78em;color:#5a6a7a;line-height:1.6}
+/* Psych card */
+.pc{background:#fafbfc;border-radius:10px;padding:14px;border-left:4px solid}
+.pc .pn{font-weight:600;font-size:0.85em;margin-bottom:4px}
+.pc .pd{color:#5a6a7a;font-size:0.78em;line-height:1.6;margin-bottom:6px}
+/* Tips grid */
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tg div{background:#fafbfc;border-radius:8px;padding:10px 12px;border:1px solid #eef1f5}
+.tg .tl{font-size:0.78em;font-weight:600;color:#2563eb;margin-bottom:2px}
+@media(max-width:640px){.tg{grid-template-columns:1fr}}
+/* Keyword bars */
+.kw-h{font-size:0.88em;margin-bottom:10px;cursor:pointer;padding:4px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.kw-h:hover{opacity:0.8}
+.kb{display:flex;align-items:center;gap:6px;margin:3px 0}
+.kb .kn{width:44px;font-size:0.78em;color:#374151;text-align:right;flex-shrink:0}
+.kb .kt{flex:1;height:12px;background:#eef1f5;border-radius:6px;overflow:hidden}
+.kb .kf{height:100%;border-radius:6px;min-width:4px}
+.kb .kc{width:26px;font-size:0.72em;color:#6b7280;text-align:right}
+/* Persons */
+.pl{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px;border-top:1px dashed #e0e4e8;padding-top:8px}
+.pi{cursor:pointer;padding:5px 8px;border-radius:6px;display:flex;justify-content:space-between;font-size:0.8em;background:#f8f9fb;transition:background 0.15s}
 .pi:hover{background:#eef4ff}
-.pm{display:none;padding-left:12px;max-height:400px;overflow-y:auto}
+.pm{display:none;padding:6px 10px;max-height:320px;overflow-y:auto}
 .pm.on{display:block}
-.pm .m{font-size:0.78em;color:#4b5563;padding:3px 6px;margin:1px 0;border-left:2px solid #d0d5dd;word-break:break-all}
+.pm .m{font-size:0.78em;color:#4b5563;padding:4px 8px;margin:2px 0;border-left:3px solid #d0d5dd;word-break:break-all;background:#fafbfc;border-radius:4px}
+/* Conversation view */
+.cv{background:#f8f9fb;border-radius:8px;padding:10px;margin-bottom:6px}
+.cv .lb{font-size:0.78em;font-weight:600;margin-bottom:6px}
+.cv .ln{font-size:0.76em;color:#6b7280;margin-left:4px;font-weight:400}
+/* Expandable */
+.sn{display:none;margin-top:8px}
+.sn.on{display:block}
+.arr{font-size:11px;color:#6b7280;margin-left:3px;transition:transform 0.2s;display:inline-block}
+.arr.rt{transform:rotate(90deg)}
+.ft{text-align:center;padding:24px;color:#9ca3af;font-size:0.78em}
+/* Two-col grids */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.g2{grid-template-columns:1fr}}
+/* Tags */
+.tags{display:flex;gap:4px;flex-wrap:wrap;margin:6px 0}
+.tag{font-size:0.7em;padding:2px 8px;border-radius:10px;background:#eef4ff;color:#1a56db}
+/* Chart bar */
+.ch{display:flex;align-items:flex-end;height:140px;padding:0 4px}
+.ch div{flex:1;display:flex;flex-direction:column;align-items:center;height:140px;justify-content:flex-end}
+.ch .vl{font-size:9px;color:#2c3e50;font-weight:600;margin-bottom:2px}
+.ch .vb{width:70%;max-width:28px;border-radius:4px 4px 2px 2px}
+.ch .vx{font-size:8px;color:#6b7280;margin-top:3px}
 </style>
 </head>
 <body>
@@ -70,28 +92,28 @@ function render(){
   // 头部
   var kct = 0;
   for(var k in d.kwFreq) kct++;
-  h += '<div class="header"><h1>\u{1F4CA} QQ\u4FEE\u4ED9\u7FA4\u804A \u00B7 \u5F00\u670D\u9996\u65E5\u62A5\u544A</h1><p style="color:#6b7280;font-size:0.85em">' + d.totalMsgs + '\u6761\u6D88\u606F \u00B7 ' + d.totalUsers + '\u540D\u6D3B\u8DC3\u6210\u5458</p><div class="sg">';
-  h += '<div class="sc"><div style="font-size:1.3em">\u{1F4AC}</div><div class="n">' + d.totalMsgs + '</div><div style="font-size:0.7em;color:#6b7280;margin-top:2px">\u6587\u672C\u6D88\u606F</div></div>';
-  h += '<div class="sc"><div style="font-size:1.3em">\u{1F465}</div><div class="n">' + d.totalUsers + '</div><div style="font-size:0.7em;color:#6b7280;margin-top:2px">\u6D3B\u8DC3\u6210\u5458</div></div>';
-  h += '<div class="sc"><div style="font-size:1.3em">\u{1F3F7}\uFE0F</div><div class="n">' + kct + '</div><div style="font-size:0.7em;color:#6b7280;margin-top:2px">\u5173\u952E\u8BCD\u5206\u7C7B</div></div>';
-  h += '<div class="sc"><div style="font-size:1.3em">\u{1F60A}</div><div class="n">' + Object.keys(d.psychs).length + '</div><div style="font-size:0.7em;color:#6b7280;margin-top:2px">\u5FC3\u7406\u5206\u6790</div></div>';
+  h += '<div class="hd"><h1>\u{1F4CA} QQ\u4FEE\u4ED9\u7FA4\u804A \u00B7 \u5F00\u670D\u9996\u65E5\u62A5\u544A</h1><p style="color:#6b7280;font-size:0.82em;margin-top:4px">' + d.totalMsgs + '\u6761\u6D88\u606F \u00B7 ' + d.totalUsers + '\u540D\u6D3B\u8DC3\u6210\u5458</p><div class="sg">';
+  h += '<div class="sc"><div class="n">' + d.totalMsgs + '</div><div style="font-size:0.72em;color:#6b7280;margin-top:2px">\u6587\u672C\u6D88\u606F</div></div>';
+  h += '<div class="sc"><div class="n">' + d.totalUsers + '</div><div style="font-size:0.72em;color:#6b7280;margin-top:2px">\u6D3B\u8DC3\u6210\u5458</div></div>';
+  h += '<div class="sc"><div class="n">' + kct + '</div><div style="font-size:0.72em;color:#6b7280;margin-top:2px">\u5173\u952E\u8BCD\u5206\u7C7B</div></div>';
+  h += '<div class="sc"><div class="n">' + Object.keys(d.psychs).length + '</div><div style="font-size:0.72em;color:#6b7280;margin-top:2px">\u5FC3\u7406\u5206\u6790</div></div>';
   h += '</div></div>';
 
   // 时段柱状图
   var hrs = Object.keys(d.hourly);
   var hvs = Object.values(d.hourly);
   var mh = Math.max.apply(null, hvs);
-  h += '<div class="cg"><div class="se"><h2>\u{1F4C8} \u65F6\u6BB5\u6D3B\u8DC3\u66F2\u7EBF</h2><div style="display:flex;align-items:flex-end;height:150px;padding:0 8px">';
+  h += '<div class="g2"><div class="sec"><h2>\u{1F4C8} \u65F6\u6BB5\u6D3B\u8DC3\u66F2\u7EBF</h2><div class="ch">';
   for(var i=0;i<hrs.length;i++){
     var p = hvs[i]/mh*100;
-    h += '<div style="flex:1;display:flex;flex-direction:column;align-items:center;height:150px;justify-content:flex-end"><div style="font-size:10px;color:#2c3e50;font-weight:600;margin-bottom:2px">' + hvs[i] + '</div><div style="width:80%;max-width:32px;height:' + p + '%;background:linear-gradient(180deg,#4a9bc7,#1a6bb5);border-radius:4px 4px 2px 2px"></div><div style="font-size:9px;color:#6b7280;margin-top:4px">' + hrs[i] + ':00</div></div>';
+    h += '<div><div class="vl">' + hvs[i] + '</div><div class="vb" style="height:' + p + '%;background:linear-gradient(180deg,#4a9bc7,#1a6bb5)"></div><div class="vx">' + hrs[i] + ':00</div></div>';
   }
   h += '</div></div>';
 
   // 关键词分布
   var KC = d.kwCats || {};
   var KF = d.kwFreq || {};
-  h += '<div class="se"><h2>\u{1F511} \u5173\u952E\u8BCD\u5206\u5E03</h2>';
+  h += '<div class="sec"><h2>\u{1F511} \u5173\u952E\u8BCD\u5206\u5E03</h2>';
   var catNames = Object.keys(KF);
   var maxCat = 0;
   for(var i=0;i<catNames.length;i++){
@@ -112,21 +134,21 @@ function render(){
   h += '</div>';
 
   // 热门话题
-  h += '<div class="se"><h2>\u{1F525} \u70ED\u95E8\u8BDD\u9898</h2>';
+  h += '<div class="sec"><h2>\u{1F525} \u70ED\u95E8\u8BDD\u9898</h2>';
   for(var i=0;i<d.topics.length;i++){
     var t = d.topics[i];
     var c = '#' + t.color.replace('#','');
     var convs = d.topicConvs[t.id]||[];
-    h += '<div class="tc" style="border-left-color:' + c + '"><div class="tt" style="color:' + c + '" data-i="' + i + '" data-type="topic">' + t.title + ' <span class="arr">\u25B6</span> <span style="font-size:0.72em;color:#6b7280;font-weight:400">' + convs.length + '\u6BB5\u5BF9\u8BDD</span></div><div class="desc">' + t.desc + '</div><div class="sn" data-id="topic' + i + '">';
+    h += '<div class="ti" style="border-left-color:' + c + '"><div class="tt" style="color:' + c + '" data-i="' + i + '" data-type="topic">' + t.title + ' <span class="arr">\u25B6</span> <span style="font-size:0.72em;color:#6b7280;font-weight:400">' + convs.length + '\u6BB5\u5BF9\u8BDD</span></div><div class="td">' + t.desc + '</div><div class="sn" data-id="topic' + i + '">';
     for(var j=0;j<convs.length;j++){
-      h += '<div class="cv"><div class="lb" style="color:' + c + '">\u{1F4CC} \u4F1A\u8BDD\u7247\u6BB5 ' + (j<CAT_NUMS.length?CAT_NUMS[j]:j+1) + '</div>' + convs[j] + '</div>';
+      h += '<div class="cv"><div class="lb" style="color:' + c + '">\u{1F4CC} \u4F1A\u8BDD\u7247\u6BB5<span class="ln">' + (j<CAT_NUMS.length?CAT_NUMS[j]:j+1) + '</span></div>' + convs[j] + '</div>';
     }
     h += '</div></div>';
   }
   h += '</div>';
 
   // 活跃成员
-  h += '<div class="se"><h2>\u{1F464} \u6700\u6D3B\u8DC3\u6210\u5458</h2>';
+  h += '<div class="sec"><h2>\u{1F464} \u6700\u6D3B\u8DC3\u6210\u5458</h2>';
   var bc = ['#FF6B35','#004E89','#E63946','#2A9D8F','#7B2D8E','#264653'];
   for(var i=0;i<d.topUsers.length;i++){
     var pct = d.topUsers[i][1]/d.topUsers[0][1]*100;
@@ -135,7 +157,7 @@ function render(){
   h += '</div>';
 
   // 反馈
-  h += '<div class="se"><h2>\u{1F4DD} \u73A9\u5BB6\u53CD\u9988 \u4EA7\u54C1\u5EFA\u8BAE</h2>';
+  h += '<div class="sec"><h2>\u{1F4DD} \u73A9\u5BB6\u53CD\u9988 \u4EA7\u54C1\u5EFA\u8BAE</h2>';
   for(var i=0;i<d.feedbacks.length;i++){
     var f = d.feedbacks[i];
     var convs = d.fbConvs[f.id]||[];
@@ -149,7 +171,7 @@ function render(){
 
   // 关键词频次明细（真实数据）
   var catOrder = Object.keys(KF);
-  h += '<div class="se"><h2>\u{1F524} \u5173\u952E\u8BCD\u9891\u6B21\u660E\u7EC6</h2>';
+  h += '<div class="sec"><h2>\u{1F524} \u5173\u952E\u8BCD\u9891\u6B21\u660E\u7EC6</h2>';
   h += '<div style="font-size:0.76em;color:#6b7280;margin-bottom:10px">\u6BCF\u4E2A\u5206\u7C7B\u4E0B\u5404\u5173\u952E\u8BCD\u51FA\u73B0\u6B21\u6570 \u00B7 \u70B9\u51FB\u67E5\u770B\u5404\u4EBA\u7269\u5177\u4F53\u8A00\u8BBA</div>';
   for(var ki=0;ki<catOrder.length;ki++){
     var cn2 = catOrder[ki];
@@ -158,14 +180,14 @@ function render(){
     var maxVal = items.length > 0 ? items[0][1] : 1;
     var people = d.kwPeople[cn2]||[];
     
-    h += '<div class="kw-sec"><h3 style="color:' + color2 + '" data-i="' + ki + '" data-type="kw">' + cn2 + ' <span style="font-weight:400;font-size:0.78em;color:#6b7280">' + items.length + '\u4E2A\u5173\u952E\u8BCD \u00B7 ' + people.length + '\u4EBA \u70B9\u51FB\u67E5\u770B\u4EBA\u7269 <span class="arr">\u25B6</span></span></h3>';
+    h += '<div style="margin-bottom:14px"><div class="kw-h" style="color:' + color2 + '" data-i="' + ki + '" data-type="kw">' + cn2 + ' <span style="font-weight:400;font-size:0.78em;color:#6b7280">' + items.length + '\u4E2A\u5173\u952E\u8BCD \u00B7 ' + people.length + '\u4EBA <span class="arr">\u25B6</span></span></div>';
     // 子词进度条
     for(var b=0;b<items.length;b++){
       var wb = items[b][1]/maxVal*100;
-      h += '<div class="kw-bar"><span class="nm">' + items[b][0] + '</span><div class="bg"><div class="fl" style="width:' + wb + '%;background:' + color2 + '"></div></div><span class="ct">' + items[b][1] + '\u6B21</span></div>';
+      h += '<div class="kb"><span class="kn">' + items[b][0] + '</span><div class="kt"><div class="kf" style="width:' + wb + '%;background:' + color2 + '"></div></div><span class="kc">' + items[b][1] + '\u6B21</span></div>';
     }
     // 人物分布
-    h += '<div class="sn" data-id="kw' + ki + '" style="margin-top:6px;border-top:1px dashed #e0e4e8;padding-top:6px">';
+    h += '<div class="sn" data-id="kw' + ki + '" style="margin-top:6px"><div class="pl">';
     for(var p=0;p<people.length;p++){
       h += '<div class="pi" data-ki="' + ki + '" data-pi="' + p + '" data-type="person"><span>' + people[p].user + '</span><span style="color:#6b7280;font-size:0.78em">' + (people[p].msgs||[]).length + '\u6761 <span class="arr" style="font-size:10px">\u25B6</span></span></div>';
       h += '<div class="pm" data-id="pm' + ki + '_' + p + '">';
@@ -173,14 +195,14 @@ function render(){
       for(var m=0;m<msgs.length;m++){
         h += '<div class="m">' + msgs[m] + '</div>';
       }
-      h += '</div>';
+      h += '</div>';  // pm
     }
-    h += '</div></div>';
+    h += '</div></div></div>';  // pl / sn / outer div
   }
   h += '</div>';
 
   // 心理分析
-  h += '<div class="se"><h2>\u{1F9E0} \u73A9\u5BB6\u53CD\u9988\u4E0E\u5FC3\u7406\u5206\u6790</h2><div class="pg">';
+  h += '<div class="sec"><h2>\u{1F9E0} \u73A9\u5BB6\u53CD\u9988\u4E0E\u5FC3\u7406\u5206\u6790</h2><div class="g2">';
   for(var i=0;i<d.psychs.length;i++){
     var p = d.psychs[i];
     var convs = d.psychConvs[p.name]||[];
@@ -194,14 +216,14 @@ function render(){
 
   // 游戏冷知识
   var tips = [['\u{1F3AB} \u5151\u6362\u7801','VIP666 / VIP777 / VIP888'],['\u{1F511} \u6697\u53F7\u53E3\u4EE4','\u963F\u7239\u7B11\u62CD\u6211\u8170\u7537\u513F\u7ACB\u5FD7\u5728\u8FDC\u65B9'],['\u{1F3AF} \u524D\u671F\u7B56\u7565','\u96C6\u4E2D\u517B1\u4E2A\u4E3B\u529B\u5E26\u5168\u5C5E\u6027\u8BCD\u6761'],['\u26A1 \u8D44\u8D28\u7384\u5B66','\u522B\u8FDE\u70B9\uFF0C\u70B9\u4E00\u6B21\u9000\u51FA\u6765\u518D\u70B9'],['\u{1F3E0} 10\u8FDE\u91C7\u96C6','\u5B97\u95E88\u7EA7\u89E3\u950110\u8FDE\u4E0D\u7528\u6708\u5361'],['\u2694\uFE0F \u56FD\u6218\u89C4\u5219','1\u4EBA\u63A71\u4E2A\u4FEE\u58EB\u6B7B\u4E86\u53EF\u91CD\u8FDB'],['\u{1F3C6} \u4F20\u529F\u4F4D\u7F6E','\u5B97\u7940NPC\u738B\u957F\u751F\u521B\u89D224\u5C0F\u65F6'],['\u{1F4D6} \u89E3\u9501\u5C0F\u5929\u5E08','\u5148\u770B\u5B8C\u5267\u60C5\u624D\u80FD\u62BD\u76AE\u80A4']];
-  h += '<div class="se"><h2>\u{1F4A1} \u6E38\u620F\u51B7\u77E5\u8BC6</h2><div class="tg">';
+  h += '<div class="sec"><h2>\u{1F4A1} \u6E38\u620F\u51B7\u77E5\u8BC6</h2><div class="tg">';
   for(var i=0;i<tips.length;i++){
-    h += '<div class="ti"><div class="tl">' + tips[i][0] + '</div><div style="font-size:0.8em;color:#4b5563;margin-top:2px">' + tips[i][1] + '</div></div>';
+    h += '<div><div class="tl">' + tips[i][0] + '</div><div style="font-size:0.8em;color:#4b5563;margin-top:2px">' + tips[i][1] + '</div></div>';
   }
   h += '</div></div>';
 
   // 数据洞察
-  h += '<div class="se"><h2>\u{1F4CA} \u6570\u636E\u6D1E\u5BDF</h2><div class="ig">';
+  h += '<div class="sec"><h2>\u{1F4CA} \u6570\u636E\u6D1E\u5BDF</h2><div class="g2">';
   h += '<div style="background:#f8fafc;border-radius:10px;padding:12px;border:1px solid rgba(230,57,70,0.2)"><h3 style="font-size:0.85em;margin-bottom:8px;color:#E63946">\u{1F6A8} \u4E3B\u8981\u98CE\u9669\u9879</h3>';
   for(var i=0;i<d.risks.length;i++){
     var r = d.risks[i];
@@ -225,7 +247,7 @@ function render(){
   }
   h += '</div></div></div>';
 
-  h += '<div class="footer"><p>\u{1F4CA} NapCatQQ \u7FA4\u804A\u8BB0\u5F55 \u00B7 \u6570\u636E\u9A71\u52A8\u751F\u6210</p></div>';
+  h += '<div class="ft"><p>\u{1F4CA} NapCatQQ \u7FA4\u804A\u8BB0\u5F55 \u00B7 \u6570\u636E\u9A71\u52A8\u751F\u6210</p></div>';
   document.getElementById('app').innerHTML = h;
 }
 
