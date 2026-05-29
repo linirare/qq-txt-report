@@ -148,7 +148,7 @@ function render(){
         <div class="tt">${t.title}</div>
         <div class="btn" id="b_s_${t.id}" style="background:${COLORS[t.title]||'#E63946'}">+</div></div>
       <div class="desc">${t.desc}</div>
-      <div class="tags">${(t.tags||[]).map(tg=>`<span class="tag" style="background:${TAG_COLORS[tg]||'#dc2626'}22;color:${TAG_COLORS[tg]||'#dc2626'};border-color:${TAG_COLORS[tg]||'#dc2626'}44">${tg}</span>`).join('')}</div>
+      <div class="snips" id="s_${t.id}">${convs.map((c,i)=>`<div style="margin-bottom:8px;background:#fafbfc;border-radius:6px;padding:8px"><div style="font-size:0.78em;font-weight:600;color:${COLORS[t.title]||"#E63946"};margin-bottom:4px">📌 会话片段 ${NUM_CN[i]||""}</div>${c}</div>`).join("")}</div></div>`;
       <div class="snips" id="s_${t.id}">${convs.map((c,i)=>`<div class="ctx hl"><span class="num" style="background:${COLORS[t.title]||'#E63946'}">${NUM_CN[i]||''}</span>${c}</div>`).join('')}</div></div>`;
   });
   h += `</div>`;
@@ -188,7 +188,7 @@ function render(){
           <div class="txt"><span class="issue">${f.issue}</span> · ${f.desc||''} ${f.status?`<span class="status">${f.status}</span>`:''}</div></div>
         <div class="meta">
           <span class="cnt">${f.count}条</span>
-          <div class="btn" id="b_fb_${f.id}" style="background:#6b7280;width:20px;height:20px;font-size:14px">+</div></div></div>
+      <div class="snips" id="fb_${f.id}">${convs.map((c,i)=>`<div style="margin-bottom:6px;background:#fafbfc;border-radius:6px;padding:6px"><div style="font-size:0.78em;font-weight:600;color:#6b7280;margin-bottom:3px">📌 会话片段 ${NUM_CN[i]||""}</div>${c}</div>`).join("")}</div></div>`;
       <div class="snips" id="fb_${f.id}">${convs.map((c,i)=>`<div class="ctx hl"><span class="num" style="background:#6b7280">${NUM_CN[i]||''}</span>${c}</div>`).join('')}</div></div>`;
   });
   h += `</div>`;
@@ -219,7 +219,7 @@ function render(){
       <div class="ph"><span class="pn" style="color:${p.color}">${p.name}</span></div>
       <div class="pd">${p.desc}</div>
       <div style="cursor:pointer" onclick="tg('ps_${p.name.replace(/[（）]/g,'')}')">
-        <span style="font-size:0.78em;color:#2980b9">查看对话场景 +</span></div>
+      <div class="snips" id="ps_${p.name.replace(/[（）]/g,"")}">${convs.map((c,i)=>`<div style="margin-bottom:6px;background:#fafbfc;border-radius:6px;padding:6px"><div style="font-size:0.78em;font-weight:600;color:${p.color};margin-bottom:3px">📌 会话片段 ${NUM_CN[i]||""}</div>${c}</div>`).join("")}</div></div>`;
       <div class="snips" id="ps_${p.name.replace(/[（）]/g,'')}">${convs.map((c,i)=>`<div class="ctx hl" style="border-left-color:${p.color}"><span class="num" style="background:${p.color}">${NUM_CN[i]||''}</span>${c}</div>`).join('')}</div></div>`;
   });
   h += `</div></div>`;
@@ -241,7 +241,7 @@ function render(){
       <div class="rh" onclick="tg('risk_${r.id}')">
         <div class="rt" style="color:${r.color}">🔴 ${r.title}</div>
         <div class="re" id="b_risk_${r.id}" style="background:${r.color}22;color:${r.color}">+</div></div>
-      <div class="rd">📋 ${r.desc}</div>
+      <div class="snips" id="risk_${r.id}">${convs.map((c,i)=>`<div style="margin-bottom:6px;background:#fafbfc;border-radius:6px;padding:6px"><div style="font-size:0.78em;font-weight:600;color:#E63946;margin-bottom:3px">📌 会话片段 ${NUM_CN[i]||""}</div>${c}</div>`).join("")}</div></div>`;
       <div class="snips" id="risk_${r.id}">${convs.map((c,i)=>`<div class="ctx hl"><span class="num" style="background:#E63946">${NUM_CN[i]||''}</span>${c}</div>`).join('')}</div></div>`;
   });
   h += `</div>`;
@@ -254,7 +254,7 @@ function render(){
       <div class="rh" onclick="tg('good_${g.id}')">
         <div class="rt" style="color:${g.color}">🟢 ${g.title}</div>
         <div class="re" id="b_good_${g.id}" style="background:${g.color}22;color:${g.color}">+</div></div>
-      <div class="rd">📋 ${g.desc}</div>
+      <div class="snips" id="good_${g.id}">${convs.map((c,i)=>`<div style="margin-bottom:6px;background:#fafbfc;border-radius:6px;padding:6px"><div style="font-size:0.78em;font-weight:600;color:#2A9D8F;margin-bottom:3px">📌 会话片段 ${NUM_CN[i]||""}</div>${c}</div>`).join("")}</div></div>`;
       <div class="snips" id="good_${g.id}">${convs.map((c,i)=>`<div class="ctx hl"><span class="num" style="background:#2A9D8F">${NUM_CN[i]||''}</span>${c}</div>`).join('')}</div></div>`;
   });
   h += `</div></div></div>`;
