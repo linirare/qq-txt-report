@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>📊 QQ修仙群聊 开服首日分析报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#1f2937;line-height:1.6;-webkit-text-size-adjust:100%}
+.container{max-width:960px;margin:0 auto;padding:10px}
+.header{background:linear-gradient(135deg,#fff,#f0f4ff,#e8eefd);border-radius:16px;padding:24px 16px;margin:8px 0 14px;text-align:center;border:1px solid rgba(26,86,219,0.15)}
+.header h1{font-size:1.4em;color:#1a56db}
+.header .sub{color:#6b7280;margin-top:4px;font-size:0.85em}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.stat-card{background:#fff;border-radius:12px;padding:14px 6px;text-align:center;border:1px solid rgba(26,86,219,0.1)}
+.stat-icon{font-size:1.3em}
+.stat-number{font-size:1.5em;font-weight:700;color:#1f2937;margin-top:2px}
+.stat-label{font-size:0.7em;color:#6b7280;margin-top:2px}
+.section{background:#fff;border-radius:14px;padding:16px 14px;margin-bottom:12px;border:1px solid rgba(26,86,219,0.08)}
+.section h2{font-size:1.1em;color:#1f2937;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(26,86,219,0.12)}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chart-box{background:#f8fafc;border-radius:10px;padding:10px}
+
+/* Topic card */
+.topic-card{background:rgba(255,255,255,0.03);border-radius:10px;padding:12px;margin-bottom:8px;border-left:4px solid #E63946}
+.topic-header{display:flex;justify-content:space-between;align-items:flex-start;cursor:pointer}
+.topic-title{font-size:0.95em;font-weight:600;color:#1f2937;flex:1}
+.topic-expand{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#E63946;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-left:8px;margin-top:1px}
+.topic-expand.active{transform:rotate(45deg);background:#6b7280}
+.topic-detail{color:#4b5563;font-size:0.82em;line-height:1.6;margin-top:6px}
+.topic-tags{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+.topic-tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:0.7em;background:rgba(220,38,38,0.08);color:#dc2626;border:1px solid rgba(220,38,38,0.3)}
+.topic-snippets{overflow:hidden;max-height:0;transition:max-height 0.4s ease}
+.topic-snippets.open{max-height:1000px}
+.snippet{padding:6px 10px;margin:4px 0;background:#f8fafc;border-radius:6px;border-left:3px solid #E63946;font-size:0.82em;color:#4b5563}
+.snippet .user{color:#1a56db;font-weight:600}
+.snippet .text{color:#374151;margin-top:1px}
+.snippet-num{display:inline-block;background:#E63946;color:#fff;font-size:0.7em;padding:1px 6px;border-radius:3px;margin-right:4px}
+
+/* Feedback */
+.feedback-item{padding:10px 10px;border-bottom:1px solid rgba(26,86,219,0.06)}
+.feedback-item:last-child{border-bottom:none}
+.fb-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.fb-left{display:flex;gap:8px;align-items:flex-start;flex:1}
+.fb-emoj{font-size:0.95em;flex-shrink:0;margin-top:1px}
+.fb-text{font-size:0.82em;color:#4b5563}
+.fb-text .issue{color:#dc2626;font-weight:600}
+.fb-text .status{color:#059669}
+.fb-meta{display:flex;gap:6px;align-items:center;flex-shrink:0;margin-left:8px}
+.fb-count{font-size:0.75em;color:#6b7280;background:#f0f2f5;padding:2px 8px;border-radius:10px}
+.fb-expand{width:20px;height:20px;border-radius:50%;background:#e5e7eb;color:#6b7280;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.fb-expand.active{transform:rotate(45deg);background:#6b7280;color:#fff}
+
+/* Keyword section */
+.kw-section{margin-bottom:14px}
+.kw-section h3{font-size:0.85em;color:#1a56db;margin-bottom:6px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.kw-section h3 .kw-expand{font-size:12px;color:#6b7280;transition:transform 0.2s}
+.kw-section h3 .kw-expand.active{transform:rotate(45deg)}
+.kw-bar{display:flex;align-items:center;gap:6px;margin:3px 0}
+.kw-bar-name{width:56px;font-size:0.78em;color:#374151;text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kw-bar-track{flex:1;height:16px;background:rgba(26,86,219,0.04);border-radius:8px;overflow:hidden}
+.kw-bar-fill{height:100%;border-radius:8px;min-width:3px}
+.kw-bar-count{width:24px;font-size:0.75em;color:#6b7280;flex-shrink:0;text-align:right}
+.kw-snippets{overflow:hidden;max-height:0;transition:max-height 0.4s ease;padding-left:62px}
+.kw-snippets.open{max-height:2000px}
+
+/* Tags */
+.highlight-red{color:#dc2626;font-weight:700}
+.highlight-yellow{color:#d97706;font-weight:600}
+.insights-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.insight-box{background:#f8fafc;border-radius:10px;padding:12px}
+.insight-box h3{font-size:0.85em;margin-bottom:6px}
+.insight-box ul{list-style:none}
+.insight-box li{font-size:0.78em;color:#4b5563;padding:3px 0;line-height:1.5}
+.event-desc{font-size:0.78em;color:#6b7280;background:#fff;border-radius:6px;padding:6px 8px;margin:4px 0 8px;border:1px solid rgba(230,57,70,0.1)}
+.event-desc .tl{color:#1a56db;font-weight:500}
+.footer{text-align:center;padding:20px;color:#9ca3af;font-size:0.78em}
+@media(max-width:640px){
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .chart-grid{grid-template-columns:1fr}
+  .insights-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>📊 QQ修仙群聊 · 开服首日报告</h1>
+  <div class="sub">2026-05-28 18:00 ~ 23:43 · 共600条文本消息</div>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card"><div class="stat-icon">💬</div><div class="stat-number">600</div><div class="stat-label">文本消息</div></div>
+  <div class="stat-card"><div class="stat-icon">👥</div><div class="stat-number">21</div><div class="stat-label">活跃成员</div></div>
+  <div class="stat-card"><div class="stat-icon">🏷️</div><div class="stat-number">60+</div><div class="stat-label">关键词</div></div>
+  <div class="stat-card"><div class="stat-icon">😊</div><div class="stat-number">67</div><div class="stat-label">表情</div></div>
+</div>
+
+<!-- 时段活跃 & 关键词分布 -->
+<div class="chart-grid">
+  <div class="section"><h2>📈 时段活跃曲线</h2><div class="chart-box" id="hourlyChart">时段数据加载中...</div></div>
+  <div class="section"><h2>🔑 关键词分布</h2><div class="chart-box" id="keywordChart">关键词数据加载中...</div></div>
+</div>
+
+<!-- 🔥 热门话题 -->
+<div class="section">
+  <h2>🔥 热门话题 重点关注</h2>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggleSnippets('t1')">
+      <div class="topic-title">🔥 传功限制争议</div>
+      <div class="topic-expand" id="exp-t1">+</div>
+    </div>
+    <div class="topic-detail">佩恩没pain（氪金~4000+）强烈要求无限传功，资源全给主角后发现高资质角色没资源养。群管已调整为创角24小时后可传功，但次数限制保留，玩家普遍认为1次太少，建议3次或付费可传。</div>
+    <div class="topic-tags"><span class="topic-tag">付费体验</span><span class="topic-tag">系统设计</span><span class="topic-tag">氪佬</span></div>
+    <div class="topic-snippets" id="sn-t1">
+      <div class="snippet"><span class="snippet-num">一</span><span class="user">佩恩没pain：</span><div class="text">快开传功功能吧，开服第一天无限传功不行吗</div></div>
+      <div class="snippet"><span class="snippet-num">二</span><span class="user">佩恩没pain：</span><div class="text">关键是既然有传功这个功能就彻底开放出来啊，导致给的高资质角色没资源养</div></div>
+      <div class="snippet"><span class="snippet-num">三</span><span class="user">●。樹o、：</span><div class="text">传功主要是想要降低玩家的试错成本，如果改成无限次对游戏的影响会很大，所以次数要是要限制下的</div></div>
+      <div class="snippet"><span class="snippet-num">四</span><span class="user">佩恩没pain：</span><div class="text">你们这个游戏有传功这个功能非常加分，但限制太死了，今天就把传功开放吧，我马上再充钱</div></div>
+    </div>
+  </div>
+
+  <div class="topic-card" style="border-left-color:#F4A261">
+    <div class="topic-header" onclick="toggleSnippets('t2')">
+      <div class="topic-title">💰 充值竞争与排行榜</div>
+      <div class="topic-expand" id="exp-t2" style="background:#F4A261">+</div>
+    </div>
+    <div class="topic-detail">榜一约充5000+，榜二约2000+。佩恩想冲榜一但因养错角色战力不及。雍和0氪排名22靠前期优势。98元首充礼包被认可有开服优势。</div>
+    <div class="topic-tags"><span class="topic-tag">付费点</span><span class="topic-tag">排行榜</span><span class="topic-tag">数值</span></div>
+    <div class="topic-snippets" id="sn-t2">
+      <div class="snippet"><span class="snippet-num">一</span><span class="user">佩恩没pain：</span><div class="text">不明白为什么要让充钱的和不充钱的都玩不爽，那我再充一千</div></div>
+      <div class="snippet"><span class="snippet-num">二</span><span class="user">123：</span><div class="text">榜一充了5000+？我也1万多点，但排名追不上</div></div>
+      <div class="snippet"><span class="snippet-num">三</span><span class="user">雍和：</span><div class="text">我0氪排名22，全靠前期优势撑着</div></div>
+    </div>
+  </div>
+
+  <div class="topic-card" style="border-left-color:#2A9D8F">
+    <div class="topic-header" onclick="toggleSnippets('t3')">
+      <div class="topic-title">🎮 国战系统初体验</div>
+      <div class="topic-expand" id="exp-t3" style="background:#2A9D8F">+</div>
+    </div>
+    <div class="topic-detail">20:04开放长春观BOSS活动（国战预热），1人控1个修士参战，死了可满血重进。大唐一国独大，另外两国玩家表示"麻了"。国战第一奖励仅2000玉被吐槽太少。</div>
+    <div class="topic-tags"><span class="topic-tag">国战</span><span class="topic-tag">平衡</span><span class="topic-tag">活动设计</span></div>
+    <div class="topic-snippets" id="sn-t3">
+      <div class="snippet"><span class="snippet-num">一</span><span class="user">哟哟：</span><div class="text">现在主要是国战是怎么个打法？能不能给个基础攻略提前说说？</div></div>
+      <div class="snippet"><span class="snippet-num">二</span><span class="user">朗朗：</span><div class="text">我是大唐的，我们这边好多人，另外两国应该麻了吧</div></div>
+      <div class="snippet"><span class="snippet-num">三</span><span class="user">佩恩没pain：</span><div class="text">国战第一才2000玉？打发叫花子呢</div></div>
+    </div>
+  </div>
+
+  <div class="topic-card" style="border-left-color:#E76F51">
+    <div class="topic-header" onclick="toggleSnippets('t4')">
+      <div class="topic-title">⚙️ 肝度与自动化争议</div>
+      <div class="topic-expand" id="exp-t4" style="background:#E76F51">+</div>
+    </div>
+    <div class="topic-detail">玩家多次强调"太肝了"要求降肝减负，自动战斗需月卡，10连采集也要月卡被吐槽离谱。群管回复宗门8级可解锁10连。陌云表示"在思考方案了"。</div>
+    <div class="topic-tags"><span class="topic-tag">肝度</span><span class="topic-tag">付费墙</span><span class="topic-tag">体验</span></div>
+    <div class="topic-snippets" id="sn-t4">
+      <div class="snippet"><span class="snippet-num">一</span><span class="user">张某人🌳️🌳️：</span><div class="text">自动战斗应该整个不充钱的，不然太肝了</div></div>
+      <div class="snippet"><span class="snippet-num">二</span><span class="user">贰佰"：</span><div class="text">10连采集要月卡，确实离谱，很劝退人</div></div>
+      <div class="snippet"><span class="snippet-num">三</span><span class="user">●。樹o、：</span><div class="text">陌云说在思考方案了，大家别急</div></div>
+    </div>
+  </div>
+
+  <div class="topic-card" style="border-left-color:#9B59B6">
+    <div class="topic-header" onclick="toggleSnippets('t5')">
+      <div class="topic-title">🎲 概率/数值信任危机</div>
+      <div class="topic-expand" id="exp-t5" style="background:#9B59B6">+</div>
+    </div>
+    <div class="topic-detail">贰佰反馈20多次论道全出最低奖励88，质疑1%/99%分布。群管检查后称概率没问题但玩家不信。修炼资质升级失败率高（连点4次全失败）。</div>
+    <div class="topic-tags"><span class="topic-tag">概率公示</span><span class="topic-tag">信任</span><span class="topic-tag">数值</span></div>
+    <div class="topic-snippets" id="sn-t5">
+      <div class="snippet"><span class="snippet-num">一</span><span class="user">雍和：</span><div class="text">千万别连点，我四次连点全失败</div></div>
+      <div class="snippet"><span class="snippet-num">二</span><span class="user">贰佰"：</span><div class="text">20多次论道全出最低奖励88，这概率确定没问题？</div></div>
+      <div class="snippet"><span class="snippet-num">三</span><span class="user">●。樹o、：</span><div class="text">后台查了概率没问题的，就是运气不好</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 👤 最活跃成员 -->
+<div class="section">
+  <h2>👤 最活跃成员</h2>
+  <div id="activeMembers">数据加载中...</div>
+</div>
+
+<!-- 💡 成员角色 -->
+<div class="section">
+  <h2>💡 成员角色</h2>
+  <div id="memberRoles">数据加载中...</div>
+</div>
+
+<!-- 📝 玩家反馈 -->
+<div class="section">
+  <h2>📝 玩家反馈 产品建议</h2>
+  <div id="feedbackList">
+    <div class="feedback-item">
+      <div class="fb-header" onclick="toggleFb('fb1')">
+        <div class="fb-left">
+          <div class="fb-emoj">🔴</div>
+          <div class="fb-text"><span class="issue">传功次数太少</span> — 1次/赛季太局限，建议3次或付费。<span class="status">✅ 群管已响应：创角24小时即可传功</span></div>
+        </div>
+        <div class="fb-meta">
+          <span class="fb-count">24条</span>
+          <span class="fb-expand" id="exp-fb1">+</span>
+        </div>
+      </div>
+      <div class="topic-snippets" id="sn-fb1">
+        <div class="snippet"><span class="snippet-num">一</span><span class="user">佩恩没pain：</span><div class="text">快开传功功能吧，开服第一天无限传功不行吗</div></div>
+        <div class="snippet"><span class="snippet-num">二</span><span class="user">佩恩没pain：</span><div class="text">关键是既然有传功这个功能就彻底开放出来啊，导致给的高资质角色没资源养</div></div>
+        <div class="snippet"><span class="snippet-num">三</span><span class="user">●。樹o、：</span><div class="text">传功主要是想要降低玩家的试错成本，如果改成无限次对游戏的影响会很大</div></div>
+      </div>
+    </div>
+
+    <div class="feedback-item">
+      <div class="fb-header" onclick="toggleFb('fb2')">
+        <div class="fb-left">
+          <div class="fb-emoj">🔴</div>
+          <div class="fb-text"><span class="issue">游戏太肝，缺乏自动化</span> — 自动战斗需月卡，10连采集需月卡，无扫荡。<span class="status">⏳ 陌云"在思考方案"</span></div>
+        </div>
+        <div class="fb-meta">
+          <span class="fb-count">15条</span>
+          <span class="fb-expand" id="exp-fb2">+</span>
+        </div>
+      </div>
+      <div class="topic-snippets" id="sn-fb2">
+        <div class="snippet"><span class="snippet-num">一</span><span class="user">张某人🌳️🌳️：</span><div class="text">自动战斗应该整个不充钱的，不然太肝了</div></div>
+        <div class="snippet"><span class="snippet-num">二</span><span class="user">贰佰"：</span><div class="text">10连采集要月卡，确实离谱，很劝退人</div></div>
+      </div>
+    </div>
+
+    <div class="feedback-item">
+      <div class="fb-header" onclick="toggleFb('fb3')">
+        <div class="fb-left">
+          <div class="fb-emoj">🟡</div>
+          <div class="fb-text"><span class="issue">论道奖励概率存疑</span> — 20多次全出最低值88，质疑1%/99%分布。<span class="status">⚠️ 群管称"概率没问题"但玩家不信</span></div>
+        </div>
+        <div class="fb-meta">
+          <span class="fb-count">19条</span>
+          <span class="fb-expand" id="exp-fb3">+</span>
+        </div>
+      </div>
+      <div class="topic-snippets" id="sn-fb3">
+        <div class="snippet"><span class="snippet-num">一</span><span class="user">贰佰"：</span><div class="text">20多次论道全出最低奖励88，这概率确定没问题？</div></div>
+        <div class="snippet"><span class="snippet-num">二</span><span class="user">雍和：</span><div class="text">千万别连点，我四次连点全失败</div></div>
+        <div class="snippet"><span class="snippet-num">三</span><span class="user">●。樹o、：</span><div class="text">后台查了概率没问题的，就是运气不好</div></div>
+      </div>
+    </div>
+
+    <div class="feedback-item">
+      <div class="fb-header" onclick="toggleFb('fb4')">
+        <div class="fb-left">
+          <div class="fb-emoj">🟡</div>
+          <div class="fb-text"><span class="issue">国战平衡堪忧</span> — 大唐一国独大，未选大唐玩家反馈"麻了"</div>
+        </div>
+        <div class="fb-meta">
+          <span class="fb-count">22条</span>
+          <span class="fb-expand" id="exp-fb4">+</span>
+        </div>
+      </div>
+      <div class="topic-snippets" id="sn-fb4">
+        <div class="snippet"><span class="snippet-num">一</span><span class="user">朗朗：</span><div class="text">我也是你大唐的子民，我们这边好多人</div></div>
+        <div class="snippet"><span class="snippet-num">二</span><span class="user">哟哟：</span><div class="text">能不能给个基础攻略？提前说说国战怎么玩的？</div></div>
+      </div>
+    </div>
+
+    <div class="feedback-item">
+      <div class="fb-header" onclick="toggleFb('fb5')">
+        <div class="fb-left">
+          <div class="fb-emoj">🟡</div>
+          <div class="fb-text"><span class="issue">无活动日历/基础攻略</span> — 功能入口难找，大量重复提问</div>
+        </div>
+        <div class="fb-meta">
+          <span class="fb-count">12条</span>
+          <span class="fb-expand" id="exp-fb5">+</span>
+        </div>
+      </div>
+      <div class="topic-snippets" id="sn-fb5">
+        <div class="snippet"><span class="snippet-num">一</span><span class="user">哟哟：</span><div class="text">能不能给个基础攻略？提前说说国战怎么玩的？</div></div>
+        <div class="snippet"><span class="snippet-num">二</span><span class="user">雍和：</span><div class="text">灵兽怎么获得呀，灵兽峰给的是衣服？</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 🔤 关键词频次明细 -->
+<div class="section">
+  <h2>🔤 关键词频次明细</h2>
+
+  <div class="kw-section">
+    <h3 onclick="toggleKw('kw1')">🔴 角色/英雄（共6次） <span class="kw-expand" id="exp-kw1">+</span></h3>
+    <div class="kw-bar"><div class="kw-bar-name">角色</div><div class="kw-bar-track"><div class="kw-bar-fill" style="width:80%;background:#E63946"></div></div><div class="kw-bar-count">4</div></div>
+    <div class="kw-bar"><div class="kw-bar-name">英雄</div><div class="kw-bar-track"><div class="kw-bar-fill" style="width:40%;background:#E63946"></div></div><div class="kw-bar-count">2</div></div>
+    <div class="kw-snippets" id="sn-kw1">
+      <div class="snippet"><span class="snippet-num">一</span><span class="user">佩恩没pain：</span><div class="text">导致给的高资质角色没资源养</div></div>
+      <div class="snippet"><span class="snippet-num">二</span><span class="user">人：</span><div class="text">如果零氪的话，养哪个角色好啊？</div></div>
+      <div class="snippet"><span class="snippet-num">三</span><span class="user">哟哟：</span><div class="text">需要用到所有角色？怎么打，是自己安排角色一个人？还是几个角色组队？</div></div>
+    </div>
+  </div>
+
+  <div class="kw-section">
+    <h3 onclick="toggleKw('kw2')">🔵 功能/系统（共7次） <span class="kw-expand" id="exp-kw2">+</span></h3>
+    <div class="kw-bar"><div class="kw-bar-name">功能</div><div class="kw-bar-track"><div class="kw-bar-fill" style="width:100%;background:#3498db"></div></div><div class="kw-bar-count">7</div></div>
+    <div class="kw-snippets" id="sn-kw2">
+      <div class="snippet"><span class="snippet-num">一</span><span class="user">佩恩没pain：</span><div class="text">快开传功功能吧，今天就把传功功能开放吧</div></div>
+      <div class="snippet"><span class="snippet-num">二</span><span class="user">佩恩没pain：</span><div class="text">你们这个游戏有传功这个功能非常加分</div></div>
+    </div>
+  </div>
+
+  <div class="kw-section">
+    <h3 onclick="toggleKw('kw3')">🟡 玩家吐槽（共5次） <span class="kw-expand" id="exp-kw3">+</span></h3>
+    <div class="kw-bar"><div class="kw-bar-name">离谱</div><div class="kw-bar-track"><div class="kw-bar-fill" style="width:100%;background:#F4A261"></div></div><div class="kw-bar-count">2</div></div>
+    <div class="kw-bar"><div class="kw-bar-name">恶心</div><div class="kw-bar-track"><div class="kw-bar-fill" style="width:50%;background:#F4A261"></div></div><div class="kw-bar-count">1</div></div>
+    <div class="kw-bar"><div class="kw-bar-name">无语</div><div class="kw-bar-track"><div class="kw-bar-fill" style="width:50%;background:#F4A261"></div></div><div class="kw-bar-count">1</div></div>
+    <div class="kw-bar"><div class="kw-bar-name">劝退</div><div class="kw-bar-track"><div class="kw-bar-fill" style="width:50%;background:#F4A261"></div></div><div class="kw-bar-count">1</div></div>
+    <div class="kw-snippets" id="sn-kw3">
+      <div class="snippet"><span class="snippet-num">一</span><span class="user">佩恩没pain：</span><div class="text">不是纯纯恶心玩家吗</div></div>
+      <div class="snippet"><span class="snippet-num">二</span><span class="user">贰佰"：</span><div class="text">10连采集要月卡，确实离谱，很劝退人</div></div>
+      <div class="snippet"><span class="snippet-num">三</span><span class="user">雍和：</span><div class="text">灵石也全是最低，很无语</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 💡 游戏冷知识 -->
+<div class="section">
+  <h2>💡 游戏冷知识</h2>
+  <div id="gameTips">数据加载中...</div>
+</div>
+
+<!-- 📊 数据洞察 -->
+<div class="section">
+  <h2>📊 数据洞察</h2>
+  <div class="insights-grid">
+    <div class="insight-box" style="border:1px solid rgba(230,57,70,0.2)">
+      <h3 style="color:#E63946">🚨 主要风险项</h3>
+      <ul>
+        <li>🔴 氪金大R <span class="highlight-red">佩恩</span> 养错角色体验差 → 短期付费留存风险</li>
+        <div class="event-desc"><span class="tl">📋 事件过程：</span>佩恩开服即氪金~4000+，将全部资源投入主角后发现高资质门客无资源培养，要求无限传功被拒。群管理虽已调整创角24小时可传功，但佩恩追加充值3000后仍表示"体验差"，如问题持续发酵可能流失。</div>
+        <li>🔴 <span class="highlight-red">肝度劝退</span> 开服首日即被吐槽 → 泛用户流失风险</li>
+        <div class="event-desc"><span class="tl">📋 事件过程：</span>开服当晚18:00起，张某人、贰佰、雍和等多名玩家先后提出"太肝"质疑。自动战斗锁月卡、10连采集锁月卡触发集中吐槽。运营团队仅回应"陌云在思考方案"，无具体时间表和补偿，玩家情绪未缓解。</div>
+        <li>🟡 <span class="highlight-yellow">概率信任危机</span> → 需公示具体概率防扩散</li>
+        <div class="event-desc"><span class="tl">📋 事件过程：</span>贰佰多次论道全出最低奖励88，在群内公开质疑概率。群管●。樹o、表示后台数据正常，但玩家明确表示"不信"。叠加资质升级4连失败案例，信任度持续走低。建议在下个版本公告中明确公示具体概率数值。</div>
+        <li>🟡 三国阵营 <span class="highlight-yellow">平衡隐患</span> → 大唐一家独大，两国加速流失</li>
+        <div class="event-desc"><span class="tl">📋 事件过程：</span>国战选阵营阶段，大部分玩家集中选择大唐，另外两国人口明显不足。朗朗等玩家表示"另两国麻了"，阵营失衡导致后续国战缺乏竞争性，弱势阵营玩家活跃度下降明显。</div>
+      </ul>
+    </div>
+    <div class="insight-box" style="border:1px solid rgba(42,157,143,0.2)">
+      <h3 style="color:#2A9D8F">✅ 可取之处</h3>
+      <ul>
+        <li>🟢 群管群内实时回应 → 玩家感知好（佩恩追加3000）</li>
+        <li>🟢 首日更新响应快（动画加速/传功时间）</li>
+        <li>🟢 BOSS战"死了可重进"降低挫败感</li>
+        <li>🟢 暗号兑换制造社交传播话题</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footer"><p>📊 NapCatQQ 群聊记录 · 2026-05-28</p></div>
+</div>
+
+<script>
+// 展开/收起功能
+function toggleSnippets(id){
+  const sn = document.getElementById('sn-'+id);
+  const exp = document.getElementById('exp-'+id);
+  sn.classList.toggle('open');
+  exp.classList.toggle('active');
+}
+function toggleFb(id){
+  const sn = document.getElementById('sn-'+id);
+  const exp = document.getElementById('exp-'+id);
+  sn.classList.toggle('open');
+  exp.classList.toggle('active');
+}
+function toggleKw(id){
+  const sn = document.getElementById('sn-'+id);
+  const exp = document.getElementById('exp-'+id);
+  sn.classList.toggle('open');
+  exp.classList.toggle('active');
+}
+</script>
+</body>
+</html>
