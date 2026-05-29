@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>📊 QQ修仙群聊 · 开服首日分析报告</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -10,191 +10,147 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .container{max-width:960px;margin:0 auto}
 .header{background:linear-gradient(135deg,#fff,#f0f4ff,#e8eefd);border-radius:16px;padding:24px 16px;margin:8px 0 14px;text-align:center;border:1px solid rgba(26,86,219,0.15)}
 .header h1{font-size:1.4em;color:#1a56db;margin-bottom:4px}
-.header .sub{color:#6b7280;font-size:0.85em}
 .sg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
 .sc{background:#fff;border-radius:12px;padding:14px 6px;text-align:center;border:1px solid rgba(26,86,219,0.1)}
 .sc .n{font-size:1.5em;font-weight:700}
-.sc .l{font-size:0.7em;color:#6b7280;margin-top:2px}
 .se{background:#fff;border-radius:14px;padding:16px 14px;margin-bottom:12px;border:1px solid rgba(26,86,219,0.08)}
 .se h2{font-size:1.1em;color:#1f2937;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(26,86,219,0.12)}
 .cg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:640px){.sg{grid-template-columns:repeat(2,1fr)}.cg{grid-template-columns:1fr}}
 .tc{border-radius:10px;padding:12px;margin-bottom:8px;border-left:4px solid;cursor:pointer}
+.tc:hover{background:#f8faff}
 .tc .tt{font-size:0.95em;font-weight:600}
 .tc .desc{color:#4b5563;font-size:0.82em;line-height:1.6;margin:6px 0}
-.tc .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
-.tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:0.7em;border:1px solid}
-.fb{padding:10px;border-bottom:1px solid rgba(26,86,219,0.06)}
-.fb .fh{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.fb .fi{font-size:0.82em;color:#4b5563}
-.fb .issue{color:#dc2626;font-weight:600}
-.fb .status{color:#059669}
-.cnt{font-size:0.75em;color:#6b7280;background:#f0f2f5;padding:2px 8px;border-radius:10px}
-.snip{display:none;margin-top:6px}
-.snip.on{display:block}
-.ctx{background:#f8fafc;border-radius:6px;padding:6px 10px;margin:3px 0;border-left:3px solid;font-size:0.82em}
-.ctx .u{font-weight:600;color:#1a56db}
-.ctx .t{color:#374151}
-.conv-seg{background:#fafbfc;border-radius:6px;padding:8px;margin-bottom:8px}
-.conv-seg .label{font-size:0.78em;font-weight:600;margin-bottom:4px}
-.kws{margin-bottom:14px}
-.kws h3{font-size:0.85em;color:#1a56db;margin-bottom:6px;cursor:pointer}
+.kw{margin-bottom:14px}
+.kw h3{font-size:0.85em;color:#1a56db;margin-bottom:6px}
 .kb{display:flex;align-items:center;gap:6px;margin:3px 0}
 .kb .nm{width:56px;font-size:0.78em;color:#374151;text-align:right;flex-shrink:0}
 .kb .bg{flex:1;height:16px;background:#eef1f5;border-radius:8px;overflow:hidden}
-.kb .fl{height:100%;border-radius:8px;min-width:3px}
+.kb .fl{height:100%;border-radius:8px}
 .kb .ct{width:24px;font-size:0.75em;color:#6b7280;text-align:right}
-.pi{cursor:pointer;padding:4px 8px;margin:2px 0;border-radius:4px;display:flex;justify-content:space-between;align-items:center;font-size:0.82em;background:#fafbfc}
+.pi{cursor:pointer;padding:4px 8px;margin:2px 0;border-radius:4px;display:flex;justify-content:space-between;font-size:0.82em;background:#fafbfc}
 .pi:hover{background:#eef4ff}
 .pm{display:none;padding-left:16px}
 .pm.on{display:block}
-.pm .msg{font-size:0.78em;color:#4b5563;padding:2px 6px;margin:1px 0;border-left:2px solid #d0d5dd}
+.pm .m{font-size:0.78em;color:#4b5563;padding:2px 6px;margin:1px 0;border-left:2px solid #d0d5dd}
+.fb{padding:10px;border-bottom:1px solid rgba(26,86,219,0.06);cursor:pointer}
+.fb:hover{background:#f8faff}
 .ri{margin-bottom:10px}
-.ri .rh{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.ri .rt{font-size:0.85em;font-weight:500;flex:1}
-.ri .rd{font-size:0.78em;color:#6b7280;background:#fff;border-radius:6px;padding:6px 8px;margin:4px 0;border:1px solid rgba(230,57,70,0.1)}
+.ri .rt{font-size:0.85em;font-weight:500;cursor:pointer}
+.ri .rd{font-size:0.78em;color:#6b7280;background:#fff;border-radius:6px;padding:6px 8px;margin:4px 0}
 .pg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 @media(max-width:640px){.pg{grid-template-columns:1fr}}
-.pi2{background:#fafbfc;border-radius:8px;padding:12px 14px;border:1px solid #eef1f5;border-left:4px solid}
-.pi2 .pn{font-weight:600;font-size:0.85em}
-.pi2 .pd{color:#5a6a7a;font-size:0.78em;line-height:1.5}
+.pc{background:#fafbfc;border-radius:8px;padding:12px 14px;border:1px solid #eef1f5;border-left:4px solid}
+.pc .pn{font-weight:600;font-size:0.85em}
+.pc .pd{color:#5a6a7a;font-size:0.78em;line-height:1.5}
 .ig{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .tg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .ti{background:#fafbfc;border-radius:8px;padding:10px;border:1px solid #eef1f5}
 .ti .tl{font-size:0.78em;font-weight:600;color:#2980b9}
-.ti .tc{font-size:0.8em;color:#4b5563;margin-top:2px}
-.btn,.btn2{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;cursor:pointer;color:#fff;flex-shrink:0;transition:0.2s}
-.btn.rot{transform:rotate(45deg);background:#6b7280!important}
+.cv{background:#fafbfc;border-radius:6px;padding:8px;margin-bottom:8px}
+.cv .lb{font-size:0.78em;font-weight:600;margin-bottom:4px}
+.ctx{background:#f8fafc;border-radius:6px;padding:4px 10px;margin:2px 0;border-left:3px solid;font-size:0.82em}
+.sn{display:none;margin-top:6px}
+.sn.on{display:block}
+.arr{font-size:12px;color:#6b7280;margin-left:4px;transition:transform 0.2s;display:inline-block}
+.arr.rt{transform:rotate(90deg)}
 .footer{text-align:center;padding:20px;color:#9ca3af;font-size:0.78em}
 </style>
 </head>
 <body>
 <div class="container" id="app"></div>
 <script>
-// 数据先声明
-let RD = null;
-let NUM = ['一','二','三','四','五'];
-
-function qs(s){return document.querySelector(s);}
-function qsa(s){return document.querySelectorAll(s);}
-function byId(id){return document.getElementById(id);}
-
-// 展开/收起
-function tg(id){
-  const el = byId(id);
-  if(el) el.classList.toggle('on');
-  // 找对应的按钮
-  const btn = document.querySelector(`[data-target="${id}"]`);
-  if(btn) btn.classList.toggle('rot');
-}
+// 全局数据
+var RD = null;
 
 function render(){
-  const d = RD; if(!d) return;
-  let h = '';
+  var d = RD; if(!d) return;
+  var h = '';
 
-  // == Header ==
-  h += '<div class="header"><h1>📊 QQ修仙群聊 · 开服首日报告</h1><div class="sub">' + d.totalMsgs + '条消息 · ' + d.totalUsers + '名活跃成员</div><div class="sg">';
-  [['💬',d.totalMsgs,'文本消息'],['👥',d.totalUsers,'活跃成员'],['🏷️','60+','关键词'],['😊','67','表情']].forEach(function(s){
-    h += '<div class="sc"><div style="font-size:1.3em">' + s[0] + '</div><div class="n" style="color:#1f2937">' + s[1] + '</div><div class="l">' + s[2] + '</div></div>';
-  });
+  h += '<div class="header"><h1>📊 QQ修仙群聊 · 开服首日报告</h1><p style="color:#6b7280;font-size:0.85em">' + d.totalMsgs + '条消息 · ' + d.totalUsers + '名活跃成员</p><div class="sg">';
+  var stats = [['💬',d.totalMsgs,'文本消息'],['👥',d.totalUsers,'活跃成员'],['🏷️','60+','关键词'],['😊','67','表情']];
+  for(var i=0;i<stats.length;i++){
+    h += '<div class="sc"><div style="font-size:1.3em">' + stats[i][0] + '</div><div class="n">' + stats[i][1] + '</div><div style="font-size:0.7em;color:#6b7280;margin-top:2px">' + stats[i][2] + '</div></div>';
+  }
   h += '</div></div>';
 
-  // == 时段活跃 + 关键词 ==
-  h += '<div class="cg">';
   // 时段柱状图
   var hrs = Object.keys(d.hourly);
   var hvs = Object.values(d.hourly);
-  var maxH = Math.max.apply(null, hvs);
-  h += '<div class="se"><h2>📈 时段活跃曲线</h2><div style="display:flex;align-items:flex-end;height:150px;padding:0 8px">';
+  var mh = Math.max.apply(null, hvs);
+  h += '<div class="cg"><div class="se"><h2>📈 时段活跃曲线</h2><div style="display:flex;align-items:flex-end;height:150px;padding:0 8px">';
   for(var i=0;i<hrs.length;i++){
-    var pct = hvs[i]/maxH*100;
-    h += '<div style="flex:1;display:flex;flex-direction:column;align-items:center;height:150px;justify-content:flex-end"><div style="font-size:10px;color:#2c3e50;font-weight:600;margin-bottom:2px">' + hvs[i] + '</div><div style="width:80%;max-width:32px;height:' + pct + '%;background:linear-gradient(180deg,#4a9bc7,#1a6bb5);border-radius:4px 4px 2px 2px"></div><div style="font-size:9px;color:#6b7280;margin-top:4px">' + hrs[i] + ':00</div></div>';
+    var p = hvs[i]/mh*100;
+    h += '<div style="flex:1;display:flex;flex-direction:column;align-items:center;height:150px;justify-content:flex-end"><div style="font-size:10px;color:#2c3e50;font-weight:600;margin-bottom:2px">' + hvs[i] + '</div><div style="width:80%;max-width:32px;height:' + p + '%;background:linear-gradient(180deg,#4a9bc7,#1a6bb5);border-radius:4px 4px 2px 2px"></div><div style="font-size:9px;color:#6b7280;margin-top:4px">' + hrs[i] + ':00</div></div>';
   }
   h += '</div><div style="text-align:center;color:#6b7280;font-size:0.72em;margin-top:6px">高峰 18:00（278条）· 整体递减</div></div>';
 
-  // 关键词分布
-  var kwData = [['传功/养成',77,'#E63946'],['氪金/付费',83,'#F4A261'],['战斗/国战',41,'#2A9D8F'],['角色/英雄',30,'#3498db'],['功能/系统',45,'#9B59B6'],['玩家吐槽',21,'#E76F51']];
+  // 关键词
+  var kd = [['传功/养成',77,'#E63946'],['氪金/付费',83,'#F4A261'],['战斗/国战',41,'#2A9D8F'],['角色/英雄',30,'#3498db'],['功能/系统',45,'#9B59B6'],['玩家吐槽',21,'#E76F51']];
   h += '<div class="se"><h2>🔑 关键词分布</h2>';
-  for(var i=0;i<kwData.length;i++){
-    var w = kwData[i][1]/83*100;
-    h += '<div style="display:flex;align-items:center;gap:6px;margin:4px 0"><span style="width:64px;font-size:0.76em;color:#374151;text-align:right;flex-shrink:0">' + kwData[i][0] + '</span><div style="flex:1;height:16px;background:#eef1f5;border-radius:6px;overflow:hidden"><div style="height:100%;width:' + w + '%;background:' + kwData[i][2] + ';border-radius:6px"></div></div><span style="width:20px;font-size:0.72em;color:#6b7280">' + kwData[i][1] + '</span></div>';
+  for(var i=0;i<kd.length;i++){
+    var w = kd[i][1]/83*100;
+    h += '<div style="display:flex;align-items:center;gap:6px;margin:4px 0"><span style="width:64px;font-size:0.76em;color:#374151;text-align:right;flex-shrink:0">' + kd[i][0] + '</span><div style="flex:1;height:16px;background:#eef1f5;border-radius:6px;overflow:hidden"><div style="height:100%;width:' + w + '%;background:' + kd[i][2] + ';border-radius:6px"></div></div><span style="width:20px;font-size:0.72em;color:#6b7280">' + kd[i][1] + '</span></div>';
   }
   h += '</div></div>';
 
-  // == 热门话题 ==
+  // 话题
   h += '<div class="se"><h2>🔥 热门话题</h2>';
-  var tColors = {'传功限制争议':'#E63946','充值竞争与排行榜':'#F4A261','国战系统初体验':'#2A9D8F','肝度与自动化争议':'#E76F51','概率/数值信任危机':'#9B59B6'};
-  var tTags = {'付费体验':'#dc2626','系统设计':'#7c3aed','氪佬':'#f59e0b','付费点':'#f59e0b','排行榜':'#3b82f6','数值':'#8b5cf6','国战':'#059669','平衡':'#ea580c','活动设计':'#0891b2','肝度':'#d97706','付费墙':'#dc2626','概率公示':'#7c3aed','信任':'#0891b2'};
   for(var i=0;i<d.topics.length;i++){
     var t = d.topics[i];
-    var c = tColors[t.title]||'#E63946';
+    var c = '#'+t.color.replace('#','');
+    h += '<div class="tc" style="border-left-color:' + c + '"><div class="tt" style="color:' + c + '" data-i="' + i + '" data-type="topic">' + t.title + ' <span class="arr">▶</span></div><div class="desc">' + t.desc + '</div><div class="sn" data-id="topic' + i + '">';
     var convs = d.topicConvs[t.id]||[];
-    h += '<div class="tc" style="border-left-color:' + c + '"><div class="tt" style="color:' + c + '" onclick="tg(\\'sn_t' + i + '\\')">' + t.title + '</div><div class="desc">' + t.desc + '</div><div class="tags">';
-    for(var j=0;j<(t.tags||[]).length;j++){
-      var tc2 = tTags[t.tags[j]]||'#dc2626';
-      h += '<span class="tag" style="background:' + tc2 + '22;color:' + tc2 + ';border-color:' + tc2 + '44">' + t.tags[j] + '</span>';
-    }
-    h += '</div><div class="snip" id="sn_t' + i + '">';
     for(var j=0;j<convs.length;j++){
-      h += '<div class="conv-seg"><div class="label" style="color:' + c + '">📌 会话片段 ' + (NUM[j]||'') + '</div>' + convs[j] + '</div>';
+      h += '<div class="cv"><div class="lb" style="color:' + c + '">📌 会话片段 ' + '一二三四五'.charAt(j) + '</div>' + convs[j] + '</div>';
     }
     h += '</div></div>';
   }
   h += '</div>';
 
-  // == 活跃成员 ==
+  // 活跃成员
   h += '<div class="se"><h2>👤 最活跃成员</h2>';
-  var barColors = ['#FF6B35','#004E89','#E63946','#2A9D8F','#7B2D8E','#264653'];
+  var bc = ['#FF6B35','#004E89','#E63946','#2A9D8F','#7B2D8E','#264653'];
   for(var i=0;i<d.topUsers.length;i++){
     var pct = d.topUsers[i][1]/d.topUsers[0][1]*100;
-    h += '<div style="display:flex;align-items:center;gap:8px;margin:4px 0"><span style="width:56px;font-size:0.76em;color:#374151;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0">' + d.topUsers[i][0] + '</span><div style="flex:1;height:18px;background:#eef1f5;border-radius:9px;overflow:hidden"><div style="height:100%;width:' + pct + '%;background:' + barColors[i] + ';border-radius:9px"></div></div><span style="width:20px;font-size:0.76em;color:#2980b9;font-weight:600;text-align:right">' + d.topUsers[i][1] + '</span></div>';
+    h += '<div style="display:flex;align-items:center;gap:8px;margin:4px 0"><span style="width:56px;font-size:0.76em;color:#374151;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0">' + d.topUsers[i][0] + '</span><div style="flex:1;height:18px;background:#eef1f5;border-radius:9px;overflow:hidden"><div style="height:100%;width:' + pct + '%;background:' + bc[i] + ';border-radius:9px"></div></div><span style="width:20px;font-size:0.76em;color:#2980b9;font-weight:600;text-align:right">' + d.topUsers[i][1] + '</span></div>';
   }
   h += '</div>';
 
-  // == 成员角色 ==
-  var roles = [['雍和',88,'核心活跃/0氪排22','#FF6B35'],['123',40,'活跃/氪6元','#004E89'],['佩恩没pain',40,'氪金大R/冲榜','#E63946'],['雾随雨落',19,'0氪活跃反馈','#2A9D8F'],['●。樹o、',41,'群管理员','#7B2D8E'],['朗朗',40,'活跃/榜二','#264653'],['哟哟',24,'活跃/攻略流','#287271'],['张某人',20,'反馈肝度','#E76F51']];
-  h += '<div class="se"><h2>💡 成员角色</h2><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">';
-  for(var i=0;i<roles.length;i++){
-    h += '<div style="background:#fafbfc;border-radius:8px;padding:10px 6px;text-align:center;border:1px solid #eef1f5"><div style="font-size:0.78em;font-weight:600;color:' + roles[i][3] + '">' + roles[i][0] + '</div><div style="font-size:1em;font-weight:700;color:#2980b9;margin:2px 0">' + roles[i][1] + '</div><div style="font-size:0.6em;color:#8899cc">' + roles[i][2] + '</div></div>';
-  }
-  h += '</div></div>';
-
-  // == 玩家反馈 ==
+  // 反馈
   h += '<div class="se"><h2>📝 玩家反馈 产品建议</h2>';
   for(var i=0;i<d.feedbacks.length;i++){
     var f = d.feedbacks[i];
     var convs = d.fbConvs[f.id]||[];
-    h += '<div class="fb"><div class="fh" onclick="tg(\\'sn_f' + i + '\\')"><div style="display:flex;gap:8px;align-items:flex-start;flex:1"><div style="font-size:0.95em">' + f.emoji + '</div><div class="fi"><span class="issue">' + f.issue + '</span> · ' + (f.desc||'') + (f.status?' <span class="status">' + f.status + '</span>':'') + '</div></div><div style="display:flex;gap:6px;align-items:center;flex-shrink:0;margin-left:8px"><span class="cnt">' + f.count + '条</span><span class="btn" data-target="sn_f' + i + '" style="background:#6b7280;width:20px;height:20px;font-size:14px">+</span></div></div><div class="snip" id="sn_f' + i + '">';
+    h += '<div class="fb" data-i="' + i + '" data-type="fb"><div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;gap:8px;align-items:flex-start;flex:1"><span>' + f.emoji + '</span><span style="font-size:0.82em;color:#4b5563"><b style="color:#dc2626">' + f.issue + '</b> ' + (f.desc||'') + ' <span style="color:#059669">' + (f.status||'') + '</span></span></div><span style="font-size:0.75em;color:#6b7280;background:#f0f2f5;padding:2px 8px;border-radius:10px">' + f.count + '条</span></div><div class="sn" data-id="fb' + i + '">';
     for(var j=0;j<convs.length;j++){
-      h += '<div class="conv-seg"><div class="label" style="color:#6b7280">📌 会话片段 ' + (NUM[j]||'') + '</div>' + convs[j] + '</div>';
+      h += '<div class="cv"><div class="lb" style="color:#6b7280">📌 会话片段 ' + '一二三四五'.charAt(j) + '</div>' + convs[j] + '</div>';
     }
     h += '</div></div>';
   }
   h += '</div>';
 
-  // == 关键词明细 + 人物分布 ==
+  // 关键词明细 + 人物
   h += '<div class="se"><h2>🔤 关键词频次明细</h2>';
-  var kwNames = ['传功/养成','氪金/付费','玩家吐槽'];
-  var kwBars = [
-    [['养',20,'#E63946'],['传功',17,'#E63946'],['资质',12,'#E63946'],['元婴',6,'#E63946'],['金丹',3,'#E63946']],
-    [['充',27,'#F4A261'],['氪',14,'#F4A261'],['抽',9,'#F4A261'],['首充',5,'#F4A261']],
-    [['离谱',2,'#E76F51'],['恶心',1,'#E76F51'],['劝退',1,'#E76F51'],['无语',1,'#E76F51']]
+  var kwN = ['传功/养成','氪金/付费','玩家吐槽'];
+  var kwB = [
+    [['养',20,'#E63946'],['传功',17,'#E63946'],['资质',12,'#E63946']],
+    [['充',27,'#F4A261'],['氪',14,'#F4A261'],['抽',9,'#F4A261']],
+    [['离谱',2,'#E76F51'],['恶心',1,'#E76F51'],['劝退',1,'#E76F51']]
   ];
-  for(var kwIdx=0;kwIdx<3;kwIdx++){
-    h += '<div class="kws"><h3 onclick="tg(\\'sn_kw' + kwIdx + '\\')">' + (kwIdx===0?'🔴':kwIdx===1?'🟠':'🟡') + ' ' + kwNames[kwIdx] + '<span style="font-size:12px;color:#6b7280;margin-left:6px" data-target="sn_kw' + kwIdx + '">+</span></h3>';
-    for(var b=0;b<kwBars[kwIdx].length;b++){
-      var bar = kwBars[kwIdx][b];
-      var w = bar[1]/kwBars[kwIdx][0][1]*100;
-      h += '<div class="kb"><span class="nm">' + bar[0] + '</span><div class="bg"><div class="fl" style="width:' + w + '%;background:' + bar[2] + '"></div></div><span class="ct">' + bar[1] + '</span></div>';
+  for(var ki=0;ki<3;ki++){
+    h += '<div class="kw"><h3>' + (ki===0?'🔴':ki===1?'🟠':'🟡') + ' ' + kwN[ki] + ' <span class="arr" data-i="' + ki + '" data-type="kw">▶</span></h3>';
+    for(var b=0;b<kwB[ki].length;b++){
+      var wb = kwB[ki][b][1]/kwB[ki][0][1]*100;
+      h += '<div class="kb"><span class="nm">' + kwB[ki][b][0] + '</span><div class="bg"><div class="fl" style="width:' + wb + '%;background:' + kwB[ki][b][2] + '"></div></div><span class="ct">' + kwB[ki][b][1] + '</span></div>';
     }
-    // 人物分布
-    var people = d.kwPeople[kwIdx]||[];
-    h += '<div class="snip" id="sn_kw' + kwIdx + '"><div style="border-top:1px dashed #e0e4e8;padding-top:6px">';
+    var people = d.kwPeople[ki]||[];
+    h += '<div class="sn" data-id="kw' + ki + '"><div style="border-top:1px dashed #e0e4e8;padding-top:6px">';
     for(var p=0;p<people.length;p++){
-      h += '<div class="pi" onclick="tg(\\'pm_' + kwIdx + '_' + p + '\\')"><span style="font-weight:600;color:#374151">' + people[p].user + '</span><span style="color:#6b7280;font-size:0.78em">' + (people[p].msgs||[]).length + '条 <span style="color:#2980b9">+</span></span></div><div class="pm" id="pm_' + kwIdx + '_' + p + '">';
+      h += '<div class="pi" data-ki="' + ki + '" data-pi="' + p + '" data-type="person"><span>' + people[p].user + '</span><span style="color:#6b7280;font-size:0.78em">' + (people[p].msgs||[]).length + '条 <span class="arr" style="font-size:10px">▶</span></span></div><div class="pm" data-id="pm' + ki + '_' + p + '">';
       var msgs = people[p].msgs||[];
       for(var m=0;m<msgs.length;m++){
-        h += '<div class="msg">' + msgs[m] + '</div>';
+        h += '<div class="m">' + msgs[m] + '</div>';
       }
       h += '</div>';
     }
@@ -202,69 +158,100 @@ function render(){
   }
   h += '</div>';
 
-  // == 心理分析 ==
+  // 心理分析
   h += '<div class="se"><h2>🧠 玩家反馈与心理分析</h2><div class="pg">';
   for(var i=0;i<d.psychs.length;i++){
     var p = d.psychs[i];
     var convs = d.psychConvs[p.name]||[];
-    h += '<div class="pi2" style="border-left-color:' + p.color + '"><div class="pn" style="color:' + p.color + '">' + p.name + '</div><div class="pd">' + p.desc + '</div><div style="cursor:pointer;font-size:0.78em;color:#2980b9" onclick="tg(\\'sn_ps' + i + '\\')">查看对话场景 +</div><div class="snip" id="sn_ps' + i + '">';
+    h += '<div class="pc" style="border-left-color:' + p.color + '"><div class="pn" style="color:' + p.color + '">' + p.name + '</div><div class="pd">' + p.desc + '</div><div style="cursor:pointer;font-size:0.78em;color:#2980b9" data-i="' + i + '" data-type="psych">查看对话场景 <span class="arr">▶</span></div><div class="sn" data-id="psych' + i + '">';
     for(var j=0;j<convs.length;j++){
-      h += '<div class="conv-seg"><div class="label" style="color:' + p.color + '">📌 会话片段 ' + (NUM[j]||'') + '</div>' + convs[j] + '</div>';
+      h += '<div class="cv"><div class="lb" style="color:' + p.color + '">📌 会话片段 ' + '一二三四五'.charAt(j) + '</div>' + convs[j] + '</div>';
     }
     h += '</div></div>';
   }
   h += '</div></div>';
 
-  // == 冷知识 ==
-  var tips = [['🎫 兑换码','VIP666 / VIP777 / VIP888'],['🔑 暗号口令','"阿爹笑，拍我腰，男儿立志在远方"'],['🎯 前期策略','集中养1个主力，优先全属性+词条'],['⚡ 资质玄学','别连点，点一次退出来等会儿再点'],['🏠 10连采集','宗门8级解锁10连，不用月卡'],['⚔️ 国战规则','1人控1个修士，死了可满血重进'],['🏆 传功位置','宗祠→NPC王长生，创角24小时'],['📖 解锁小天师','先看完剧情才能抽皮肤']];
+  // 冷知识
+  var tips = [['🎫 兑换码','VIP666 / VIP777 / VIP888'],['🔑 暗号口令','阿爹笑拍我腰男儿立志在远方'],['🎯 前期策略','集中养1个主力带全属性词条'],['⚡ 资质玄学','别连点，点一次退出来再点'],['🏠 10连采集','宗门8级解锁10连不用月卡'],['⚔️ 国战规则','1人控1个修士死了可重进'],['🏆 传功位置','宗祠NPC王长生创角24小时'],['📖 解锁小天师','先看完剧情才能抽皮肤']];
   h += '<div class="se"><h2>💡 游戏冷知识</h2><div class="tg">';
   for(var i=0;i<tips.length;i++){
-    h += '<div class="ti"><div class="tl">' + tips[i][0] + '</div><div class="tc">' + tips[i][1] + '</div></div>';
+    h += '<div class="ti"><div class="tl">' + tips[i][0] + '</div><div style="font-size:0.8em;color:#4b5563;margin-top:2px">' + tips[i][1] + '</div></div>';
   }
   h += '</div></div>';
 
-  // == 数据洞察 ==
+  // 数据洞察
   h += '<div class="se"><h2>📊 数据洞察</h2><div class="ig">';
-  // 风险
   h += '<div style="background:#f8fafc;border-radius:10px;padding:12px;border:1px solid rgba(230,57,70,0.2)"><h3 style="font-size:0.85em;margin-bottom:8px;color:#E63946">🚨 主要风险项</h3>';
   for(var i=0;i<d.risks.length;i++){
     var r = d.risks[i];
     var convs = d.riskConvs[r.id]||[];
-    h += '<div class="ri"><div class="rh" onclick="tg(\\'sn_r' + i + '\\')"><div class="rt" style="color:' + r.color + '">🔴 ' + r.title + '</div><span class="btn" data-target="sn_r' + i + '" style="background:' + r.color + '22;color:' + r.color + ';width:20px;height:20px;font-size:14px">+</span></div><div class="rd">📋 ' + r.desc + '</div><div class="snip" id="sn_r' + i + '">';
+    h += '<div class="ri"><div class="rt" data-i="' + i + '" data-type="risk">🔴 ' + r.title + ' <span class="arr">▶</span></div><div class="rd">📋 ' + r.desc + '</div><div class="sn" data-id="risk' + i + '">';
     for(var j=0;j<convs.length;j++){
-      h += '<div class="conv-seg"><div class="label" style="color:#E63946">📌 会话片段 ' + (NUM[j]||'') + '</div>' + convs[j] + '</div>';
+      h += '<div class="cv"><div class="lb" style="color:#E63946">📌 会话片段 ' + '一二三四五'.charAt(j) + '</div>' + convs[j] + '</div>';
     }
     h += '</div></div>';
   }
   h += '</div>';
-  // 可取之处
   h += '<div style="background:#f8fafc;border-radius:10px;padding:12px;border:1px solid rgba(42,157,143,0.2)"><h3 style="font-size:0.85em;margin-bottom:8px;color:#2A9D8F">✅ 可取之处</h3>';
   for(var i=0;i<d.goods.length;i++){
     var g = d.goods[i];
     var convs = d.goodConvs[g.id]||[];
-    h += '<div class="ri"><div class="rh" onclick="tg(\\'sn_g' + i + '\\')"><div class="rt" style="color:' + g.color + '">🟢 ' + g.title + '</div><span class="btn" data-target="sn_g' + i + '" style="background:' + g.color + '22;color:' + g.color + ';width:20px;height:20px;font-size:14px">+</span></div><div class="rd">📋 ' + g.desc + '</div><div class="snip" id="sn_g' + i + '">';
+    h += '<div class="ri"><div class="rt" data-i="' + i + '" data-type="good">🟢 ' + g.title + ' <span class="arr">▶</span></div><div class="rd">📋 ' + g.desc + '</div><div class="sn" data-id="good' + i + '">';
     for(var j=0;j<convs.length;j++){
-      h += '<div class="conv-seg"><div class="label" style="color:#2A9D8F">📌 会话片段 ' + (NUM[j]||'') + '</div>' + convs[j] + '</div>';
+      h += '<div class="cv"><div class="lb" style="color:#2A9D8F">📌 会话片段 ' + '一二三四五'.charAt(j) + '</div>' + convs[j] + '</div>';
     }
     h += '</div></div>';
   }
   h += '</div></div></div>';
 
   h += '<div class="footer"><p>📊 NapCatQQ 群聊记录 · 数据驱动生成</p></div>';
-
-  byId('app').innerHTML = h;
+  document.getElementById('app').innerHTML = h;
 }
 
-// tg函数（全局）
-function tg(id){
-  var el = byId(id);
-  if(el) el.classList.toggle('on');
-  var btns = document.querySelectorAll('[data-target="' + id + '"]');
-  for(var i=0;i<btns.length;i++) btns[i].classList.toggle('rot');
-}
+// 事件委托：点击展开/收起
+document.addEventListener('click', function(e){
+  var target = e.target.closest('[data-type]');
+  if(!target) return;
+  var type = target.getAttribute('data-type');
+  
+  if(type === 'topic' || type === 'fb'){
+    var idx = target.getAttribute('data-i');
+    var sn = document.querySelector('[data-id="' + type + idx + '"]');
+    if(sn) sn.classList.toggle('on');
+    var arr = target.querySelector('.arr');
+    if(arr) arr.classList.toggle('rt');
+  }
+  else if(type === 'kw'){
+    var ki = target.getAttribute('data-i');
+    var sn = document.querySelector('[data-id="kw' + ki + '"]');
+    if(sn) sn.classList.toggle('on');
+    var arr = target.querySelector('.arr');
+    if(arr) arr.classList.toggle('rt');
+  }
+  else if(type === 'person'){
+    var ki = target.getAttribute('data-ki');
+    var pi = target.getAttribute('data-pi');
+    var pm = document.querySelector('[data-id="pm' + ki + '_' + pi + '"]');
+    if(pm) pm.classList.toggle('on');
+  }
+  else if(type === 'psych'){
+    var i = target.getAttribute('data-i');
+    var sn = document.querySelector('[data-id="psych' + i + '"]');
+    if(sn) sn.classList.toggle('on');
+    var arr = target.querySelector('.arr');
+    if(arr) arr.classList.toggle('rt');
+  }
+  else if(type === 'risk' || type === 'good'){
+    var i = target.getAttribute('data-i');
+    var sn = document.querySelector('[data-id="' + type + i + '"]');
+    if(sn) sn.classList.toggle('on');
+    var arr = target.querySelector('.arr');
+    if(arr) arr.classList.toggle('rt');
+  }
+});
 </script>
 <script>
-RD = {"totalMsgs":600,"totalUsers":35,"hourly":{"18":278,"19":153,"20":107,"21":87,"22":91,"23":60},"topUsers":[["雍和",88],["123",40],["佩恩没pain",40],["雾随雨落",19],["●。樹o、",41],["朗朗",40]],"topicConvs":{"t1":[],"t2":[],"t3":[],"t4":[],"t5":[]},"fbConvs":{"fb1":[],"fb2":[],"fb3":[],"fb4":[],"fb5":[]},"riskConvs":{"r1":[],"r2":[],"r3":[],"r4":[]},"goodConvs":{"g1":[],"g2":[],"g3":[]},"psychConvs":{"损失厌恶（付费焦虑）":[],"挫败感（难度曲线）":[],"公平感知（机制质疑）":[],"社交需求（归属感）":[],"信息焦虑（引导不足）":[]},"kwPeople":[[],[],[]],"topics":[{"id":"t1","title":"传功限制争议","color":"#E63946","tags":["付费体验","系统设计","氪佬"],"desc":"佩恩没pain（氪金~4000+）强烈要求无限传功，资源全给主角后发现高资质角色没资源养。群管已调整为创角24小时后可传功。","kws":["传功","无限","次数"]},{"id":"t2","title":"充值竞争与排行榜","color":"#F4A261","tags":["付费点","排行榜","数值"],"desc":"榜一约充5000+，榜二约2000+。佩恩想冲榜一但因养错角色战力不及。","kws":["充","氪","榜","5000"]},{"id":"t3","title":"国战系统初体验","color":"#2A9D8F","tags":["国战","平衡","活动设计"],"desc":"20:04开放长春观BOSS活动，大唐一国独大，另外两国玩家表示麻了。","kws":["国战","长春","大唐","麻了"]},{"id":"t4","title":"肝度与自动化争议","color":"#E76F51","tags":["肝度","付费墙","体验"],"desc":"自动战斗需月卡，10连采集也要月卡被吐槽离谱。陌云表示在思考方案了。","kws":["肝","自动","月卡","扫荡"]},{"id":"t5","title":"概率/数值信任危机","color":"#9B59B6","tags":["概率公示","信任","数值"],"desc":"贰佰20多次论道全出最低奖励88，质疑概率。修炼资质升级失败率高。","kws":["概率","88","论道","失败"]}],"feedbacks":[{"id":"fb1","emoji":"🔴","issue":"传功次数太少","status":"✅ 群管已响应：创角24小时即可传功","count":24,"kws":["传功","次数"]},{"id":"fb2","emoji":"🔴","issue":"游戏太肝，缺乏自动化","status":"⏳ 陌云在思考方案","count":15,"kws":["肝","自动","月卡"]},{"id":"fb3","emoji":"🟡","issue":"论道奖励概率存疑","status":"⚠️ 群管称概率没问题但玩家不信","count":19,"kws":["论道","88","概率"]},{"id":"fb4","emoji":"🟡","issue":"国战平衡堪忧","status":"大唐一国独大","count":22,"kws":["国战","大唐","麻了"]},{"id":"fb5","emoji":"🟡","issue":"无活动日历/基础攻略","status":"功能入口难找","count":12,"kws":["攻略","怎么","入口"]}],"risks":[{"id":"r1","title":"氪金大R佩恩养错角色体验差","color":"#E63946","kws":["佩恩","传功","资源养","难受"],"desc":"佩恩开服即氪金~4000+，将全部资源投入主角后发现高资质门客无资源培养，要求无限传功被拒。虽已调整创角24小时可传功，但佩恩追加充值3000后仍表示体验差。"},{"id":"r2","title":"肝度劝退泛用户流失","color":"#E63946","kws":["肝","自动","月卡","劝退"],"desc":"开服当晚张某人、贰佰、雍和等多名玩家先后提出太肝质疑。自动战斗锁月卡、10连采集锁月卡触发集中吐槽。运营仅回应陌云在思考方案，无具体时间表。"},{"id":"r3","title":"概率信任危机","color":"#E63946","kws":["概率","88","失败"],"desc":"贰佰多次论道全出最低奖励88，公开质疑概率。群管表示后台数据正常但玩家不信。叠加资质升级4连失败案例，信任度持续走低。"},{"id":"r4","title":"三国阵营平衡隐患","color":"#E63946","kws":["大唐","麻了","一国"],"desc":"国战选阵营阶段大部分玩家集中选择大唐，弱势阵营玩家活跃度下降明显。"}],"goods":[{"id":"g1","title":"群管群内实时回应","color":"#2A9D8F","kws":["●。樹o、","调整","改掉"],"desc":"传功时间限制问题提出后，群管樹o、当天即回应并推动调整为创角24小时。玩家佩恩因此追加充值3000。"},{"id":"g2","title":"首日更新响应快","color":"#2A9D8F","kws":["更新","修复","加速"],"desc":"关卡动画加速3倍、传功时间缩短均在首日完成更新。"},{"id":"g3","title":"暗号兑换制造话题","color":"#2A9D8F","kws":["暗号","阿爹笑"],"desc":"阿爹笑拍我腰男儿立志在远方暗号在群内引发讨论和传播。"}],"psychs":[{"name":"损失厌恶（付费焦虑）","color":"#e74c3c","kws":["月卡","氪","充钱","付费"],"desc":"玩家对自动战斗和10连采集捆绑月卡产生抵触——不是不愿付费，而是感到被强迫。免费功能的缺失放大了损失感知。"},{"name":"挫败感（难度曲线）","color":"#e67e22","kws":["难","打不过","失败","突破"],"desc":"金丹→元婴阶段突破失败率高，连点4次全失败的案例让玩家产生努力无回报的习得性无助。"},{"name":"公平感知（机制质疑）","color":"#9b59b6","kws":["离谱","恶心","机制"],"desc":"玩家对概率、国战阵营分配等机制产生不公感——论道20多次全出最低值，强化了系统有问题的认知。"},{"name":"社交需求（归属感）","color":"#27ae60","kws":["加好友","一起","组队","带"],"desc":"玩家通过暗号兑换、国战阵营选择、攻略互助等方式寻求社交连接。群内管理员的及时回应形成了初步的社群归属。"},{"name":"信息焦虑（引导不足）","color":"#3498db","kws":["攻略","怎么","哪里","不懂"],"desc":"大量重复提问（灵兽怎么获得、国战怎么打、角色怎么养）说明新手引导存在明显缺口，玩家处于不知道该干嘛的状态。"}]};
+RD = {"totalMsgs":600,"totalUsers":35,"hourly":{"18":278,"19":153,"20":107,"21":87,"22":91,"23":60},"topUsers":[["雍和",88],["123",40],["佩恩没pain",40],["雾随雨落",19],["●。樹o、",41],["朗朗",40]],"topicConvs":{"t1":[],"t2":[],"t3":[],"t4":[],"t5":[]},"fbConvs":{"fb1":[],"fb2":[],"fb3":[],"fb4":[],"fb5":[]},"riskConvs":{"r1":[],"r2":[],"r3":[],"r4":[]},"goodConvs":{"g1":[],"g2":[],"g3":[]},"psychConvs":{"损失厌恶（付费焦虑）":[],"挫败感（难度曲线）":[],"公平感知（机制质疑）":[],"社交需求（归属感）":[],"信息焦虑（引导不足）":[]},"kwPeople":[[],[],[]],"topics":[{"id":"t1","title":"传功限制争议","color":"#E63946","tags":["付费体验","系统设计","氪佬"],"desc":"佩恩没pain（氪金~4000+）强烈要求无限传功，资源全给主角后发现高资质角色没资源养。群管已调整为创角24小时后可传功。","kws":["传功","无限","次数"]},{"id":"t2","title":"充值竞争与排行榜","color":"#F4A261","tags":["付费点","排行榜","数值"],"desc":"榜一约充5000+，榜二约2000+。佩恩想冲榜一但因养错角色战力不及。","kws":["充","氪","榜","5000"]},{"id":"t3","title":"国战系统初体验","color":"#2A9D8F","tags":["国战","平衡","活动设计"],"desc":"20:04开放长春观BOSS活动，大唐一国独大，另外两国玩家表示麻了。","kws":["国战","长春","大唐","麻了"]},{"id":"t4","title":"肝度与自动化争议","color":"#E76F51","tags":["肝度","付费墙","体验"],"desc":"自动战斗需月卡，10连采集也要月卡被吐槽离谱。","kws":["肝","自动","月卡","扫荡"]},{"id":"t5","title":"概率/数值信任危机","color":"#9B59B6","tags":["概率公示","信任","数值"],"desc":"贰佰20多次论道全出最低奖励88，质疑概率。","kws":["概率","88","论道","失败"]}],"feedbacks":[{"id":"fb1","emoji":"🔴","issue":"传功次数太少","status":"✅ 群管已响应：创角24小时即可传功","count":24,"kws":["传功","次数"]},{"id":"fb2","emoji":"🔴","issue":"游戏太肝，缺乏自动化","status":"⏳ 陌云在思考方案","count":15,"kws":["肝","自动","月卡"]},{"id":"fb3","emoji":"🟡","issue":"论道奖励概率存疑","status":"⚠️ 群管称概率没问题但玩家不信","count":19,"kws":["论道","88","概率"]},{"id":"fb4","emoji":"🟡","issue":"国战平衡堪忧","status":"大唐一国独大","count":22,"kws":["国战","大唐","麻了"]},{"id":"fb5","emoji":"🟡","issue":"无活动日历/基础攻略","status":"功能入口难找","count":12,"kws":["攻略","怎么","入口"]}],"risks":[{"id":"r1","title":"氪金大R佩恩养错角色体验差","color":"#E63946","kws":["佩恩","传功","资源养","难受"],"desc":"佩恩开服即氪金~4000+，将全部资源投入主角后发现高资质门客无资源培养，要求无限传功被拒。虽已调整创角24小时可传功，但佩恩追加充值3000后仍表示体验差。"},{"id":"r2","title":"肝度劝退泛用户流失","color":"#E63946","kws":["肝","自动","月卡","劝退"],"desc":"开服当晚张某人、贰佰、雍和等多名玩家先后提出太肝质疑。自动战斗锁月卡、10连采集锁月卡触发集中吐槽。"},{"id":"r3","title":"概率信任危机","color":"#E63946","kws":["概率","88","失败"],"desc":"贰佰多次论道全出最低奖励88，公开质疑概率。群管表示后台数据正常但玩家不信。"},{"id":"r4","title":"三国阵营平衡隐患","color":"#E63946","kws":["大唐","麻了","一国"],"desc":"国战选阵营阶段大部分玩家集中选择大唐，弱势阵营玩家活跃度下降明显。"}],"goods":[{"id":"g1","title":"群管群内实时回应","color":"#2A9D8F","kws":["●。樹o、","调整","改掉"],"desc":"传功时间限制问题提出后，群管樹o、当天即回应并推动调整为创角24小时。玩家佩恩因此追加充值3000。"},{"id":"g2","title":"首日更新响应快","color":"#2A9D8F","kws":["更新","修复","加速"],"desc":"关卡动画加速3倍、传功时间缩短均在首日完成更新。"},{"id":"g3","title":"暗号兑换制造话题","color":"#2A9D8F","kws":["暗号","阿爹笑"],"desc":"阿爹笑拍我腰男儿立志在远方暗号在群内引发讨论。"}],"psychs":[{"name":"损失厌恶（付费焦虑）","color":"#e74c3c","kws":["月卡","氪","充钱","付费"],"desc":"玩家对自动战斗和10连采集捆绑月卡产生抵触——不是不愿付费，而是感到被强迫。"},{"name":"挫败感（难度曲线）","color":"#e67e22","kws":["难","打不过","失败","突破"],"desc":"金丹→元婴阶段突破失败率高，连点4次全失败的案例让玩家产生努力无回报的习得性无助。"},{"name":"公平感知（机制质疑）","color":"#9b59b6","kws":["离谱","恶心","机制"],"desc":"玩家对概率、国战阵营分配等机制产生不公感——论道20多次全出最低值强化了系统有问题的认知。"},{"name":"社交需求（归属感）","color":"#27ae60","kws":["加好友","一起","组队","带"],"desc":"玩家通过暗号兑换、国战阵营选择、攻略互助等方式寻求社交连接。"},{"name":"信息焦虑（引导不足）","color":"#3498db","kws":["攻略","怎么","哪里","不懂"],"desc":"大量重复提问（灵兽怎么获得、国战怎么打、角色怎么养）说明新手引导存在明显缺口。"}]};
 render();
 </script>
 </body>
