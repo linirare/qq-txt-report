@@ -134,7 +134,7 @@ function render(){
     var t = d.topics[i];
     var c = '#' + t.color.replace('#','');
     var convs = d.topicConvs[t.id]||[];
-    h += '<div class="ti" style="border-left-color:' + c + '"><div class="tt" style="color:' + c + '" data-i="' + i + '" data-type="topic">' + t.title + ' <span class="arr">\u25B6</span> <span style="font-size:0.72em;color:#6b7280;font-weight:400">' + convs.length + '\u6BB5\u5BF9\u8BDD</span></div><div class="td">' + t.desc + '</div><div class="sn" data-id="topic' + i + '">';
+    h += '<div class="ti"><div class="tt" data-i="' + i + '" data-type="topic">' + t.title + ' <span class="arr">\u25B6</span> <span style="font-size:0.72em;color:#9ca3af;font-weight:400">' + convs.length + '\u6BB5\u5BF9\u8BDD</span></div><div class="td">' + t.desc + '</div><div class="sn" data-id="topic' + i + '">';
     for(var j=0;j<convs.length;j++){
       h += '<div class="cv"><div class="lb">\u{1F4CC} \u4F1A\u8BDD\u7247\u6BB5 ' + (j<CAT_NUMS.length?CAT_NUMS[j]:j+1) + '</div>' + convs[j] + '</div>';
     }
@@ -156,7 +156,7 @@ function render(){
   for(var i=0;i<d.feedbacks.length;i++){
     var f = d.feedbacks[i];
     var convs = d.fbConvs[f.id]||[];
-    h += '<div class="fb" data-i="' + i + '" data-type="fb"><div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;gap:8px;align-items:flex-start;flex:1"><span>' + f.emoji + '</span><span style="font-size:0.82em;color:#4b5563"><b style="color:#dc2626">' + f.issue + '</b> <span style="color:#059669">' + (f.status||'') + '</span></span></div><span style="font-size:0.75em;color:#6b7280;background:#f0f2f5;padding:2px 8px;border-radius:10px">' + f.count + '\u6761 <span class="arr">\u25B6</span></span></div><div class="sn" data-id="fb' + i + '">';
+    h += '<div class="fb" data-i="' + i + '" data-type="fb"><div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;gap:8px;align-items:flex-start;flex:1"><span>' + f.emoji + '</span><span style="font-size:0.82em"><b>' + f.issue + '</b> <span style="color:#6b7280;font-size:0.78em">' + (f.status||'') + '</span></span></div><span style="font-size:0.75em;color:#6b7280;background:#f0f2f5;padding:2px 10px;border-radius:12px;white-space:nowrap">' + f.count + '\u6761 <span class="arr">\u25B6</span></span></div><div class="sn" data-id="fb' + i + '">';
     for(var j=0;j<convs.length;j++){
       h += '<div class="cv"><div class="lb" style="color:#6b7280">\u{1F4CC} \u4F1A\u8BDD\u7247\u6BB5 ' + (j<CAT_NUMS.length?CAT_NUMS[j]:j+1) + '</div>' + convs[j] + '</div>';
     }
@@ -175,7 +175,7 @@ function render(){
     var maxVal = items.length > 0 ? items[0][1] : 1;
     var people = d.kwPeople[cn2]||[];
     
-    h += '<div style="margin-bottom:14px"><div class="kw-h" style="color:' + color2 + '" data-i="' + ki + '" data-type="kw">' + cn2 + ' <span style="font-weight:400;font-size:0.78em;color:#6b7280">' + items.length + '\u4E2A\u5173\u952E\u8BCD \u00B7 ' + people.length + '\u4EBA <span class="arr">\u25B6</span></span></div>';
+    h += '<div style="margin-bottom:14px"><div class="kw-h" data-i="' + ki + '" data-type="kw">' + cn2 + ' <span style="font-weight:400;font-size:0.76em;color:#9ca3af">' + items.length + '\u4E2A\u5173\u952E\u8BCD \u00B7 ' + people.length + '\u4EBA <span class="arr">\u25B6</span></span></div>';
     // 子词进度条
     for(var b=0;b<items.length;b++){
       var wb = items[b][1]/maxVal*100;
@@ -201,7 +201,7 @@ function render(){
   for(var i=0;i<d.psychs.length;i++){
     var p = d.psychs[i];
     var convs = d.psychConvs[p.name]||[];
-    h += '<div style="margin-bottom:10px"><div class="pc" style="background:#f8f9fb;border-radius:10px;padding:14px"><div class="pn" style="color:' + p.color + '">' + p.name + ' <span style="font-weight:400;font-size:0.76em;color:#6b7280">' + convs.length + '\u6BB5</span></div><div class="pd">' + p.desc + '</div><div style="cursor:pointer;font-size:0.76em;color:#2563eb" data-i="' + i + '" data-type="psych">\u67E5\u770B\u5BF9\u8BDD\u573A\u666F <span class="arr">\u25B6</span></div><div class="sn" data-id="psych' + i + '">';
+    h += '<div style="margin-bottom:10px"><div class="pc"><div class="pn">' + p.name + ' <span style="font-weight:400;font-size:0.76em;color:#6b7280">' + convs.length + '\u6BB5</span></div><div class="pd">' + p.desc + '</div><div style="cursor:pointer;font-size:0.76em;color:#2563eb" data-i="' + i + '" data-type="psych">\u67E5\u770B\u5BF9\u8BDD\u573A\u666F <span class="arr">\u25B6</span></div><div class="sn" data-id="psych' + i + '">';
     for(var j=0;j<convs.length;j++){
       h += '<div class="cv"><div class="lb">\u{1F4CC} \u4F1A\u8BDD\u7247\u6BB5 ' + (j<CAT_NUMS.length?CAT_NUMS[j]:j+1) + '</div>' + convs[j] + '</div>';
     }
