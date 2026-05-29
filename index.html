@@ -6,287 +6,266 @@
 <title>📊 QQ修仙群聊 · 开服首日分析报告</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#1f2937;line-height:1.6;padding:10px}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#1f2937;padding:10px}
 .container{max-width:960px;margin:0 auto}
 .header{background:linear-gradient(135deg,#fff,#f0f4ff,#e8eefd);border-radius:16px;padding:24px 16px;margin:8px 0 14px;text-align:center;border:1px solid rgba(26,86,219,0.15)}
-.header h1{font-size:1.4em;color:#1a56db}
-.header .sub{color:#6b7280;margin-top:4px;font-size:0.85em}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
-.stat-card{background:#fff;border-radius:12px;padding:14px 6px;text-align:center;border:1px solid rgba(26,86,219,0.1)}
-.stat-card .n{font-size:1.5em;font-weight:700;color:#1f2937}
-.stat-card .l{font-size:0.7em;color:#6b7280;margin-top:2px}
-.section{background:#fff;border-radius:14px;padding:16px 14px;margin-bottom:12px;border:1px solid rgba(26,86,219,0.08)}
-.section h2{font-size:1.1em;color:#1f2937;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(26,86,219,0.12)}
-.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:640px){.stats-grid{grid-template-columns:repeat(2,1fr)}.chart-grid{grid-template-columns:1fr}}
-
-/* 话题卡片 */
-.tc{border-radius:10px;padding:12px;margin-bottom:8px;border-left:4px solid}
-.tc .th{display:flex;justify-content:space-between;align-items:flex-start;cursor:pointer}
-.tc .tt{font-size:0.95em;font-weight:600;color:#1f2937;flex:1}
-.tc .btn{flex-shrink:0;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-left:8px;color:#fff}
-.tc .btn.on{transform:rotate(45deg);background:#6b7280!important}
+.header h1{font-size:1.4em;color:#1a56db;margin-bottom:4px}
+.header .sub{color:#6b7280;font-size:0.85em}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.sc{background:#fff;border-radius:12px;padding:14px 6px;text-align:center;border:1px solid rgba(26,86,219,0.1)}
+.sc .n{font-size:1.5em;font-weight:700}
+.sc .l{font-size:0.7em;color:#6b7280;margin-top:2px}
+.se{background:#fff;border-radius:14px;padding:16px 14px;margin-bottom:12px;border:1px solid rgba(26,86,219,0.08)}
+.se h2{font-size:1.1em;color:#1f2937;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(26,86,219,0.12)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.sg{grid-template-columns:repeat(2,1fr)}.cg{grid-template-columns:1fr}}
+.tc{border-radius:10px;padding:12px;margin-bottom:8px;border-left:4px solid;cursor:pointer}
+.tc .tt{font-size:0.95em;font-weight:600}
 .tc .desc{color:#4b5563;font-size:0.82em;line-height:1.6;margin:6px 0}
-.tc .tags{display:flex;gap:6px;flex-wrap:wrap}
-.tc .tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:0.7em;background:rgba(220,38,38,0.08);border:1px solid rgba(220,38,38,0.3)}
-.snips{overflow:hidden;max-height:0;transition:max-height 0.4s;margin-top:6px}
-.snips.open{max-height:2000px}
-
-/* 对话气泡 */
-.ctx{padding:4px 10px;margin:3px 0;background:#f8fafc;border-radius:6px;border-left:3px solid;font-size:0.82em}
-.ctx .u{font-weight:600}
-.ctx .t{color:#374151}
-.ctx.hl{background:#eef4ff;border-left-color:#1a56db!important}
-.ctx.hl .u{color:#1a56db}
-.ctx.hl .t{font-weight:500}
-.ctx .num{display:inline-block;font-size:0.7em;padding:1px 6px;border-radius:3px;margin-right:4px;color:#fff}
-
-/* 反馈 */
+.tc .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:0.7em;border:1px solid}
 .fb{padding:10px;border-bottom:1px solid rgba(26,86,219,0.06)}
-.fb:last-child{border-bottom:none}
 .fb .fh{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.fb .fl{display:flex;gap:8px;align-items:flex-start;flex:1}
-.fb .txt{font-size:0.82em;color:#4b5563}
+.fb .fi{font-size:0.82em;color:#4b5563}
 .fb .issue{color:#dc2626;font-weight:600}
 .fb .status{color:#059669}
-.fb .meta{display:flex;gap:6px;align-items:center;flex-shrink:0;margin-left:8px}
-.fb .cnt{font-size:0.75em;color:#6b7280;background:#f0f2f5;padding:2px 8px;border-radius:10px}
-
-/* 关键词人物 */
+.cnt{font-size:0.75em;color:#6b7280;background:#f0f2f5;padding:2px 8px;border-radius:10px}
+.snip{display:none;margin-top:6px}
+.snip.on{display:block}
+.ctx{background:#f8fafc;border-radius:6px;padding:6px 10px;margin:3px 0;border-left:3px solid;font-size:0.82em}
+.ctx .u{font-weight:600;color:#1a56db}
+.ctx .t{color:#374151}
+.conv-seg{background:#fafbfc;border-radius:6px;padding:8px;margin-bottom:8px}
+.conv-seg .label{font-size:0.78em;font-weight:600;margin-bottom:4px}
 .kws{margin-bottom:14px}
-.kws h3{font-size:0.85em;color:#1a56db;margin-bottom:6px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-.kw-bar{display:flex;align-items:center;gap:6px;margin:3px 0}
-.kw-bar .nm{width:56px;font-size:0.78em;color:#374151;text-align:right;flex-shrink:0}
-.kw-bar .bg{flex:1;height:16px;background:#eef1f5;border-radius:8px;overflow:hidden}
-.kw-bar .fl{height:100%;border-radius:8px;min-width:3px}
-.kw-bar .ct{width:24px;font-size:0.75em;color:#6b7280;text-align:right}
-.person-list{margin-top:6px;border-top:1px dashed #e0e4e8;padding-top:6px}
-.person-item{cursor:pointer;padding:4px 8px;margin:2px 0;border-radius:4px;display:flex;justify-content:space-between;align-items:center;font-size:0.82em;background:#fafbfc}
-.person-item:hover{background:#eef4ff}
-.person-item .pn{font-weight:600;color:#374151}
-.person-item .pc{color:#6b7280;font-size:0.78em}
-.person-msgs{overflow:hidden;max-height:0;transition:max-height 0.3s;padding-left:16px}
-.person-msgs.open{max-height:500px}
-.person-msgs .pm{font-size:0.78em;color:#4b5563;padding:2px 6px;margin:1px 0;border-left:2px solid #d0d5dd}
-
-/* 风险/可取 */
-.risk-item{margin-bottom:10px}
-.risk-item .rh{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.risk-item .rt{font-size:0.85em;font-weight:500;flex:1}
-.risk-item .re{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;flex-shrink:0;margin-left:6px}
-.risk-item .re.on{transform:rotate(45deg);background:#6b7280!important;color:#fff!important}
-.risk-item .rd{font-size:0.78em;color:#6b7280;background:#fff;border-radius:6px;padding:6px 8px;margin:4px 0;border:1px solid rgba(230,57,70,0.1)}
-
-/* 心理卡片 */
-.psych-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media(max-width:640px){.psych-grid{grid-template-columns:1fr}}
-.psych-item{background:#fafbfc;border-radius:8px;padding:12px 14px;border:1px solid #eef1f5;border-left:4px solid}
-.psych-item .ph{display:flex;justify-content:space-between;margin-bottom:2px}
-.psych-item .pn{font-weight:600;font-size:0.85em}
-.psych-item .pc{font-weight:600;font-size:0.8em}
-.psych-item .pd{color:#5a6a7a;font-size:0.78em;line-height:1.5;margin-bottom:4px}
-
-/* 冷知识 */
-.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.tip{background:#fafbfc;border-radius:8px;padding:10px;border:1px solid #eef1f5}
-.tip .tl{font-size:0.78em;font-weight:600;color:#2980b9}
-.tip .tc{font-size:0.8em;color:#4b5563;margin-top:2px}
+.kws h3{font-size:0.85em;color:#1a56db;margin-bottom:6px;cursor:pointer}
+.kb{display:flex;align-items:center;gap:6px;margin:3px 0}
+.kb .nm{width:56px;font-size:0.78em;color:#374151;text-align:right;flex-shrink:0}
+.kb .bg{flex:1;height:16px;background:#eef1f5;border-radius:8px;overflow:hidden}
+.kb .fl{height:100%;border-radius:8px;min-width:3px}
+.kb .ct{width:24px;font-size:0.75em;color:#6b7280;text-align:right}
+.pi{cursor:pointer;padding:4px 8px;margin:2px 0;border-radius:4px;display:flex;justify-content:space-between;align-items:center;font-size:0.82em;background:#fafbfc}
+.pi:hover{background:#eef4ff}
+.pm{display:none;padding-left:16px}
+.pm.on{display:block}
+.pm .msg{font-size:0.78em;color:#4b5563;padding:2px 6px;margin:1px 0;border-left:2px solid #d0d5dd}
+.ri{margin-bottom:10px}
+.ri .rh{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.ri .rt{font-size:0.85em;font-weight:500;flex:1}
+.ri .rd{font-size:0.78em;color:#6b7280;background:#fff;border-radius:6px;padding:6px 8px;margin:4px 0;border:1px solid rgba(230,57,70,0.1)}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:640px){.pg{grid-template-columns:1fr}}
+.pi2{background:#fafbfc;border-radius:8px;padding:12px 14px;border:1px solid #eef1f5;border-left:4px solid}
+.pi2 .pn{font-weight:600;font-size:0.85em}
+.pi2 .pd{color:#5a6a7a;font-size:0.78em;line-height:1.5}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.ti{background:#fafbfc;border-radius:8px;padding:10px;border:1px solid #eef1f5}
+.ti .tl{font-size:0.78em;font-weight:600;color:#2980b9}
+.ti .tc{font-size:0.8em;color:#4b5563;margin-top:2px}
+.btn,.btn2{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;cursor:pointer;color:#fff;flex-shrink:0;transition:0.2s}
+.btn.rot{transform:rotate(45deg);background:#6b7280!important}
 .footer{text-align:center;padding:20px;color:#9ca3af;font-size:0.78em}
 </style>
 </head>
 <body>
 <div class="container" id="app"></div>
 <script>
-let D = null; // data injected below
-const COLORS = {'传功限制争议':'#E63946','充值竞争与排行榜':'#F4A261','国战系统初体验':'#2A9D8F',
-  '肝度与自动化争议':'#E76F51','概率/数值信任危机':'#9B59B6'};
-const TAG_COLORS = {'付费体验':'#dc2626','系统设计':'#7c3aed','氪佬':'#f59e0b','付费点':'#f59e0b',
-  '排行榜':'#3b82f6','数值':'#8b5cf6','国战':'#059669','平衡':'#ea580c','活动设计':'#0891b2',
-  '肝度':'#d97706','付费墙':'#dc2626','概率公示':'#7c3aed','信任':'#0891b2'};
-const NUM_CN = ['一','二','三','四','五','六'];
+// 数据先声明
+let RD = null;
+let NUM = ['一','二','三','四','五'];
+
+function qs(s){return document.querySelector(s);}
+function qsa(s){return document.querySelectorAll(s);}
+function byId(id){return document.getElementById(id);}
+
+// 展开/收起
+function tg(id){
+  const el = byId(id);
+  if(el) el.classList.toggle('on');
+  // 找对应的按钮
+  const btn = document.querySelector(`[data-target="${id}"]`);
+  if(btn) btn.classList.toggle('rot');
+}
 
 function render(){
-  const d = D; if(!d) return;
+  const d = RD; if(!d) return;
   let h = '';
 
-  // Header
-  h += `<div class="header"><h1>📊 QQ修仙群聊 · 开服首日报告</h1><div class="sub">${d.totalMsgs}条消息 · ${d.totalUsers}名活跃成员</div>
-    <div class="stats-grid">${[['💬',d.totalMsgs,'文本消息'],['👥',d.totalUsers,'活跃成员'],['🏷️','60+','关键词'],['😊','67','表情']].map(s=>
-      `<div class="stat-card"><div style="font-size:1.3em">${s[0]}</div><div class="n">${s[1]}</div><div class="l">${s[2]}</div></div>`
-    ).join('')}</div></div>`;
-
-  // 时段&关键词
-  const hrs = Object.keys(d.hourly);
-  const hvs = Object.values(d.hourly);
-  const maxH = Math.max(...hvs);
-  h += `<div class="chart-grid">
-    <div class="section"><h2>📈 时段活跃曲线</h2>
-      <div style="display:flex;align-items:flex-end;height:150px;padding:0 8px">${hrs.map((k,i)=>{
-        const pct = hvs[i]/maxH*100;
-        return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;height:150px;justify-content:flex-end">
-          <div style="font-size:10px;color:#2c3e50;font-weight:600;margin-bottom:2px">${hvs[i]}</div>
-          <div style="width:80%;max-width:32px;height:${pct}%;background:linear-gradient(180deg,#4a9bc7,#1a6bb5);border-radius:4px 4px 2px 2px"></div>
-          <div style="font-size:9px;color:#6b7280;margin-top:4px">${k}:00</div></div>`;
-      }).join('')}</div>
-      <div style="text-align:center;color:#6b7280;font-size:0.72em;margin-top:6px">高峰 18:00（196条）· 整体递减</div></div>
-    <div class="section"><h2>🔑 关键词分布</h2>
-      ${[['传功/养成',77,'#E63946'],['氪金/付费',83,'#F4A261'],['战斗/国战',41,'#2A9D8F'],['角色/英雄',30,'#3498db'],['功能/系统',45,'#9B59B6'],['玩家吐槽',21,'#E76F51']].map(([n,v,c])=>{
-        const w = v/83*100;
-        return `<div style="display:flex;align-items:center;gap:6px;margin:4px 0">
-          <span style="width:64px;font-size:0.76em;color:#374151;text-align:right;flex-shrink:0">${n}</span>
-          <div style="flex:1;height:16px;background:#eef1f5;border-radius:6px;overflow:hidden">
-            <div style="height:100%;width:${w}%;background:${c};border-radius:6px"></div></div>
-          <span style="width:20px;font-size:0.72em;color:#6b7280">${v}</span></div>`;
-      }).join('')}</div></div>`;
-
-  // 热门话题
-  h += `<div class="section"><h2>🔥 热门话题</h2>`;
-  d.topics.forEach(t => {
-    const convs = d.topicConvs[t.id] || [];
-    h += `<div class="tc" style="border-left-color:${COLORS[t.title]||'#E63946'}">
-      <div class="th" onclick="tg('s_${t.id}')">
-        <div class="tt">${t.title}</div>
-        <div class="btn" id="b_s_${t.id}" style="background:${COLORS[t.title]||'#E63946'}">+</div></div>
-      <div class="desc">${t.desc}</div>
-      <div class="snips" id="s_${t.id}">${convs.map((c,i)=>`<div style="margin-bottom:8px;background:#fafbfc;border-radius:6px;padding:8px"><div style="font-size:0.78em;font-weight:600;color:${COLORS[t.title]||"#E63946"};margin-bottom:4px">📌 会话片段 ${NUM_CN[i]||""}</div>${c}</div>`).join("")}</div></div>`;
-      <div class="snips" id="s_${t.id}">${convs.map((c,i)=>`<div class="ctx hl"><span class="num" style="background:${COLORS[t.title]||'#E63946'}">${NUM_CN[i]||''}</span>${c}</div>`).join('')}</div></div>`;
+  // == Header ==
+  h += '<div class="header"><h1>📊 QQ修仙群聊 · 开服首日报告</h1><div class="sub">' + d.totalMsgs + '条消息 · ' + d.totalUsers + '名活跃成员</div><div class="sg">';
+  [['💬',d.totalMsgs,'文本消息'],['👥',d.totalUsers,'活跃成员'],['🏷️','60+','关键词'],['😊','67','表情']].forEach(function(s){
+    h += '<div class="sc"><div style="font-size:1.3em">' + s[0] + '</div><div class="n" style="color:#1f2937">' + s[1] + '</div><div class="l">' + s[2] + '</div></div>';
   });
-  h += `</div>`;
+  h += '</div></div>';
 
-  // 活跃成员
-  h += `<div class="section"><h2>👤 最活跃成员</h2>`;
-  d.topUsers.forEach(([name,count],i)=>{
-    const w = count/d.topUsers[0][1]*100;
-    h += `<div style="display:flex;align-items:center;gap:8px;margin:4px 0">
-      <span style="width:56px;font-size:0.76em;color:#374151;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0">${name}</span>
-      <div style="flex:1;height:18px;background:#eef1f5;border-radius:9px;overflow:hidden">
-        <div style="height:100%;width:${w}%;background:${['#FF6B35','#004E89','#E63946','#2A9D8F','#7B2D8E','#264653'][i]};border-radius:9px"></div></div>
-      <span style="width:20px;font-size:0.76em;color:#2980b9;font-weight:600;text-align:right">${count}</span></div>`;
-  });
-  h += `</div>`;
+  // == 时段活跃 + 关键词 ==
+  h += '<div class="cg">';
+  // 时段柱状图
+  var hrs = Object.keys(d.hourly);
+  var hvs = Object.values(d.hourly);
+  var maxH = Math.max.apply(null, hvs);
+  h += '<div class="se"><h2>📈 时段活跃曲线</h2><div style="display:flex;align-items:flex-end;height:150px;padding:0 8px">';
+  for(var i=0;i<hrs.length;i++){
+    var pct = hvs[i]/maxH*100;
+    h += '<div style="flex:1;display:flex;flex-direction:column;align-items:center;height:150px;justify-content:flex-end"><div style="font-size:10px;color:#2c3e50;font-weight:600;margin-bottom:2px">' + hvs[i] + '</div><div style="width:80%;max-width:32px;height:' + pct + '%;background:linear-gradient(180deg,#4a9bc7,#1a6bb5);border-radius:4px 4px 2px 2px"></div><div style="font-size:9px;color:#6b7280;margin-top:4px">' + hrs[i] + ':00</div></div>';
+  }
+  h += '</div><div style="text-align:center;color:#6b7280;font-size:0.72em;margin-top:6px">高峰 18:00（278条）· 整体递减</div></div>';
 
-  // 成员角色
-  const roles = [['雍和',88,'核心活跃/0氪排22','#FF6B35'],['123',40,'活跃/氪6元','#004E89'],
-    ['佩恩没pain',40,'氪金大R/冲榜','#E63946'],['雾随雨落',19,'0氪活跃反馈','#2A9D8F'],
-    ['●。樹o、',41,'群管理员','#7B2D8E'],['朗朗',40,'活跃/自称榜二','#264653'],
-    ['哟哟',24,'活跃/攻略流','#287271'],['张某人',20,'反馈肝度','#E76F51']];
-  h += `<div class="section"><h2>💡 成员角色</h2><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">${
-    roles.map(r=>`<div style="background:#fafbfc;border-radius:8px;padding:10px 6px;text-align:center;border:1px solid #eef1f5">
-      <div style="font-size:0.78em;font-weight:600;color:${r[3]}">${r[0]}</div>
-      <div style="font-size:1em;font-weight:700;color:#2980b9;margin:2px 0">${r[1]}</div>
-      <div style="font-size:0.6em;color:#8899cc">${r[2]}</div></div>`
-    ).join('')}</div></div>`;
+  // 关键词分布
+  var kwData = [['传功/养成',77,'#E63946'],['氪金/付费',83,'#F4A261'],['战斗/国战',41,'#2A9D8F'],['角色/英雄',30,'#3498db'],['功能/系统',45,'#9B59B6'],['玩家吐槽',21,'#E76F51']];
+  h += '<div class="se"><h2>🔑 关键词分布</h2>';
+  for(var i=0;i<kwData.length;i++){
+    var w = kwData[i][1]/83*100;
+    h += '<div style="display:flex;align-items:center;gap:6px;margin:4px 0"><span style="width:64px;font-size:0.76em;color:#374151;text-align:right;flex-shrink:0">' + kwData[i][0] + '</span><div style="flex:1;height:16px;background:#eef1f5;border-radius:6px;overflow:hidden"><div style="height:100%;width:' + w + '%;background:' + kwData[i][2] + ';border-radius:6px"></div></div><span style="width:20px;font-size:0.72em;color:#6b7280">' + kwData[i][1] + '</span></div>';
+  }
+  h += '</div></div>';
 
-  // 玩家反馈
-  h += `<div class="section"><h2>📝 玩家反馈 产品建议</h2>`;
-  d.feedbacks.forEach(f => {
-    const convs = d.fbConvs[f.id] || [];
-    h += `<div class="fb">
-      <div class="fh" onclick="tg('fb_${f.id}')">
-        <div class="fl">
-          <div style="font-size:0.95em">${f.emoji}</div>
-          <div class="txt"><span class="issue">${f.issue}</span> · ${f.desc||''} ${f.status?`<span class="status">${f.status}</span>`:''}</div></div>
-        <div class="meta">
-          <span class="cnt">${f.count}条</span>
-      <div class="snips" id="fb_${f.id}">${convs.map((c,i)=>`<div style="margin-bottom:6px;background:#fafbfc;border-radius:6px;padding:6px"><div style="font-size:0.78em;font-weight:600;color:#6b7280;margin-bottom:3px">📌 会话片段 ${NUM_CN[i]||""}</div>${c}</div>`).join("")}</div></div>`;
-      <div class="snips" id="fb_${f.id}">${convs.map((c,i)=>`<div class="ctx hl"><span class="num" style="background:#6b7280">${NUM_CN[i]||''}</span>${c}</div>`).join('')}</div></div>`;
-  });
-  h += `</div>`;
+  // == 热门话题 ==
+  h += '<div class="se"><h2>🔥 热门话题</h2>';
+  var tColors = {'传功限制争议':'#E63946','充值竞争与排行榜':'#F4A261','国战系统初体验':'#2A9D8F','肝度与自动化争议':'#E76F51','概率/数值信任危机':'#9B59B6'};
+  var tTags = {'付费体验':'#dc2626','系统设计':'#7c3aed','氪佬':'#f59e0b','付费点':'#f59e0b','排行榜':'#3b82f6','数值':'#8b5cf6','国战':'#059669','平衡':'#ea580c','活动设计':'#0891b2','肝度':'#d97706','付费墙':'#dc2626','概率公示':'#7c3aed','信任':'#0891b2'};
+  for(var i=0;i<d.topics.length;i++){
+    var t = d.topics[i];
+    var c = tColors[t.title]||'#E63946';
+    var convs = d.topicConvs[t.id]||[];
+    h += '<div class="tc" style="border-left-color:' + c + '"><div class="tt" style="color:' + c + '" onclick="tg(\\'sn_t' + i + '\\')">' + t.title + '</div><div class="desc">' + t.desc + '</div><div class="tags">';
+    for(var j=0;j<(t.tags||[]).length;j++){
+      var tc2 = tTags[t.tags[j]]||'#dc2626';
+      h += '<span class="tag" style="background:' + tc2 + '22;color:' + tc2 + ';border-color:' + tc2 + '44">' + t.tags[j] + '</span>';
+    }
+    h += '</div><div class="snip" id="sn_t' + i + '">';
+    for(var j=0;j<convs.length;j++){
+      h += '<div class="conv-seg"><div class="label" style="color:' + c + '">📌 会话片段 ' + (NUM[j]||'') + '</div>' + convs[j] + '</div>';
+    }
+    h += '</div></div>';
+  }
+  h += '</div>';
 
-  // 关键词频次明细 + 人物分布
-  h += `<div class="section"><h2>🔤 关键词频次明细</h2>
-    <div class="kws"><h3 onclick="tg('kp_0')">🔴 传功/养成（77次）<span style="font-size:12px;color:#6b7280" id="b_kp_0">+</span></h3>
-      ${[['养',20,'#E63946'],['传功',17,'#E63946'],['资质',12,'#E63946'],['元婴',6,'#E63946'],['金丹',3,'#E63946']].map(([n,v,c])=>
-        `<div class="kw-bar"><span class="nm">${n}</span><div class="bg"><div class="fl" style="width:${v/20*100}%;background:${c}"></div></div><span class="ct">${v}</span></div>`
-      ).join('')}
-      <div class="snips" id="kp_0"><div class="person-list">${renderPersonList(d.kwPeople,0)}</div></div></div>
-    <div class="kws"><h3 onclick="tg('kp_1')">🟠 氪金/付费（83次）<span style="font-size:12px;color:#6b7280" id="b_kp_1">+</span></h3>
-      ${[['充',27,'#F4A261'],['氪',14,'#F4A261'],['抽',9,'#F4A261'],['首充',5,'#F4A261']].map(([n,v,c])=>
-        `<div class="kw-bar"><span class="nm">${n}</span><div class="bg"><div class="fl" style="width:${v/27*100}%;background:${c}"></div></div><span class="ct">${v}</span></div>`
-      ).join('')}
-      <div class="snips" id="kp_1"><div class="person-list">${renderPersonList(d.kwPeople,1)}</div></div></div>
-    <div class="kws"><h3 onclick="tg('kp_2')">🟡 玩家吐槽（21次）<span style="font-size:12px;color:#6b7280" id="b_kp_2">+</span></h3>
-      ${[['离谱',2,'#E76F51'],['恶心',1,'#E76F51'],['劝退',1,'#E76F51'],['无语',1,'#E76F51']].map(([n,v,c])=>
-        `<div class="kw-bar"><span class="nm">${n}</span><div class="bg"><div class="fl" style="width:${v/2*100}%;background:${c}"></div></div><span class="ct">${v}</span></div>`
-      ).join('')}
-      <div class="snips" id="kp_2"><div class="person-list">${renderPersonList(d.kwPeople,2)}</div></div></div></div>`;
+  // == 活跃成员 ==
+  h += '<div class="se"><h2>👤 最活跃成员</h2>';
+  var barColors = ['#FF6B35','#004E89','#E63946','#2A9D8F','#7B2D8E','#264653'];
+  for(var i=0;i<d.topUsers.length;i++){
+    var pct = d.topUsers[i][1]/d.topUsers[0][1]*100;
+    h += '<div style="display:flex;align-items:center;gap:8px;margin:4px 0"><span style="width:56px;font-size:0.76em;color:#374151;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0">' + d.topUsers[i][0] + '</span><div style="flex:1;height:18px;background:#eef1f5;border-radius:9px;overflow:hidden"><div style="height:100%;width:' + pct + '%;background:' + barColors[i] + ';border-radius:9px"></div></div><span style="width:20px;font-size:0.76em;color:#2980b9;font-weight:600;text-align:right">' + d.topUsers[i][1] + '</span></div>';
+  }
+  h += '</div>';
 
-  // 玩家反馈与心理分析
-  h += `<div class="section"><h2>🧠 玩家反馈与心理分析</h2><div class="psych-grid">`;
-  d.psychs.forEach(p => {
-    const convs = d.psychConvs[p.name] || [];
-    h += `<div class="psych-item" style="border-left-color:${p.color}">
-      <div class="ph"><span class="pn" style="color:${p.color}">${p.name}</span></div>
-      <div class="pd">${p.desc}</div>
-      <div style="cursor:pointer" onclick="tg('ps_${p.name.replace(/[（）]/g,'')}')">
-      <div class="snips" id="ps_${p.name.replace(/[（）]/g,"")}">${convs.map((c,i)=>`<div style="margin-bottom:6px;background:#fafbfc;border-radius:6px;padding:6px"><div style="font-size:0.78em;font-weight:600;color:${p.color};margin-bottom:3px">📌 会话片段 ${NUM_CN[i]||""}</div>${c}</div>`).join("")}</div></div>`;
-      <div class="snips" id="ps_${p.name.replace(/[（）]/g,'')}">${convs.map((c,i)=>`<div class="ctx hl" style="border-left-color:${p.color}"><span class="num" style="background:${p.color}">${NUM_CN[i]||''}</span>${c}</div>`).join('')}</div></div>`;
-  });
-  h += `</div></div>`;
+  // == 成员角色 ==
+  var roles = [['雍和',88,'核心活跃/0氪排22','#FF6B35'],['123',40,'活跃/氪6元','#004E89'],['佩恩没pain',40,'氪金大R/冲榜','#E63946'],['雾随雨落',19,'0氪活跃反馈','#2A9D8F'],['●。樹o、',41,'群管理员','#7B2D8E'],['朗朗',40,'活跃/榜二','#264653'],['哟哟',24,'活跃/攻略流','#287271'],['张某人',20,'反馈肝度','#E76F51']];
+  h += '<div class="se"><h2>💡 成员角色</h2><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">';
+  for(var i=0;i<roles.length;i++){
+    h += '<div style="background:#fafbfc;border-radius:8px;padding:10px 6px;text-align:center;border:1px solid #eef1f5"><div style="font-size:0.78em;font-weight:600;color:' + roles[i][3] + '">' + roles[i][0] + '</div><div style="font-size:1em;font-weight:700;color:#2980b9;margin:2px 0">' + roles[i][1] + '</div><div style="font-size:0.6em;color:#8899cc">' + roles[i][2] + '</div></div>';
+  }
+  h += '</div></div>';
 
-  // 游戏冷知识
-  const tips = [['🎫 兑换码','VIP666 / VIP777 / VIP888'],['🔑 暗号口令','"阿爹笑，拍我腰，男儿立志在远方"'],['🎯 前期策略','集中养1个主力，优先全属性+词条'],['⚡ 资质玄学','别连点，点一次退出来等会儿再点'],['🏠 10连采集','宗门8级解锁10连，不用月卡'],['⚔️ 国战规则','1人控1个修士，死了可满血重进'],['🏆 传功位置','宗祠→NPC王长生，创角24小时'],['📖 解锁小天师','先看完剧情才能抽皮肤']];
-  h += `<div class="section"><h2>💡 游戏冷知识</h2><div class="tip-grid">${
-    tips.map(t=>`<div class="tip"><div class="tl">${t[0]}</div><div class="tc">${t[1]}</div></div>`).join('')}</div></div>`;
+  // == 玩家反馈 ==
+  h += '<div class="se"><h2>📝 玩家反馈 产品建议</h2>';
+  for(var i=0;i<d.feedbacks.length;i++){
+    var f = d.feedbacks[i];
+    var convs = d.fbConvs[f.id]||[];
+    h += '<div class="fb"><div class="fh" onclick="tg(\\'sn_f' + i + '\\')"><div style="display:flex;gap:8px;align-items:flex-start;flex:1"><div style="font-size:0.95em">' + f.emoji + '</div><div class="fi"><span class="issue">' + f.issue + '</span> · ' + (f.desc||'') + (f.status?' <span class="status">' + f.status + '</span>':'') + '</div></div><div style="display:flex;gap:6px;align-items:center;flex-shrink:0;margin-left:8px"><span class="cnt">' + f.count + '条</span><span class="btn" data-target="sn_f' + i + '" style="background:#6b7280;width:20px;height:20px;font-size:14px">+</span></div></div><div class="snip" id="sn_f' + i + '">';
+    for(var j=0;j<convs.length;j++){
+      h += '<div class="conv-seg"><div class="label" style="color:#6b7280">📌 会话片段 ' + (NUM[j]||'') + '</div>' + convs[j] + '</div>';
+    }
+    h += '</div></div>';
+  }
+  h += '</div>';
 
-  // 数据洞察
-  h += `<div class="section"><h2>📊 数据洞察</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">`;
-  // 风险项
-  h += `<div style="background:#f8fafc;border-radius:10px;padding:12px;border:1px solid rgba(230,57,70,0.2)">
-    <h3 style="font-size:0.85em;margin-bottom:8px;color:#E63946">🚨 主要风险项</h3>`;
-  d.risks.forEach(r => {
-    const convs = d.riskConvs[r.id] || [];
-    h += `<div class="risk-item">
-      <div class="rh" onclick="tg('risk_${r.id}')">
-        <div class="rt" style="color:${r.color}">🔴 ${r.title}</div>
-        <div class="re" id="b_risk_${r.id}" style="background:${r.color}22;color:${r.color}">+</div></div>
-      <div class="snips" id="risk_${r.id}">${convs.map((c,i)=>`<div style="margin-bottom:6px;background:#fafbfc;border-radius:6px;padding:6px"><div style="font-size:0.78em;font-weight:600;color:#E63946;margin-bottom:3px">📌 会话片段 ${NUM_CN[i]||""}</div>${c}</div>`).join("")}</div></div>`;
-      <div class="snips" id="risk_${r.id}">${convs.map((c,i)=>`<div class="ctx hl"><span class="num" style="background:#E63946">${NUM_CN[i]||''}</span>${c}</div>`).join('')}</div></div>`;
-  });
-  h += `</div>`;
+  // == 关键词明细 + 人物分布 ==
+  h += '<div class="se"><h2>🔤 关键词频次明细</h2>';
+  var kwNames = ['传功/养成','氪金/付费','玩家吐槽'];
+  var kwBars = [
+    [['养',20,'#E63946'],['传功',17,'#E63946'],['资质',12,'#E63946'],['元婴',6,'#E63946'],['金丹',3,'#E63946']],
+    [['充',27,'#F4A261'],['氪',14,'#F4A261'],['抽',9,'#F4A261'],['首充',5,'#F4A261']],
+    [['离谱',2,'#E76F51'],['恶心',1,'#E76F51'],['劝退',1,'#E76F51'],['无语',1,'#E76F51']]
+  ];
+  for(var kwIdx=0;kwIdx<3;kwIdx++){
+    h += '<div class="kws"><h3 onclick="tg(\\'sn_kw' + kwIdx + '\\')">' + (kwIdx===0?'🔴':kwIdx===1?'🟠':'🟡') + ' ' + kwNames[kwIdx] + '<span style="font-size:12px;color:#6b7280;margin-left:6px" data-target="sn_kw' + kwIdx + '">+</span></h3>';
+    for(var b=0;b<kwBars[kwIdx].length;b++){
+      var bar = kwBars[kwIdx][b];
+      var w = bar[1]/kwBars[kwIdx][0][1]*100;
+      h += '<div class="kb"><span class="nm">' + bar[0] + '</span><div class="bg"><div class="fl" style="width:' + w + '%;background:' + bar[2] + '"></div></div><span class="ct">' + bar[1] + '</span></div>';
+    }
+    // 人物分布
+    var people = d.kwPeople[kwIdx]||[];
+    h += '<div class="snip" id="sn_kw' + kwIdx + '"><div style="border-top:1px dashed #e0e4e8;padding-top:6px">';
+    for(var p=0;p<people.length;p++){
+      h += '<div class="pi" onclick="tg(\\'pm_' + kwIdx + '_' + p + '\\')"><span style="font-weight:600;color:#374151">' + people[p].user + '</span><span style="color:#6b7280;font-size:0.78em">' + (people[p].msgs||[]).length + '条 <span style="color:#2980b9">+</span></span></div><div class="pm" id="pm_' + kwIdx + '_' + p + '">';
+      var msgs = people[p].msgs||[];
+      for(var m=0;m<msgs.length;m++){
+        h += '<div class="msg">' + msgs[m] + '</div>';
+      }
+      h += '</div>';
+    }
+    h += '</div></div></div>';
+  }
+  h += '</div>';
+
+  // == 心理分析 ==
+  h += '<div class="se"><h2>🧠 玩家反馈与心理分析</h2><div class="pg">';
+  for(var i=0;i<d.psychs.length;i++){
+    var p = d.psychs[i];
+    var convs = d.psychConvs[p.name]||[];
+    h += '<div class="pi2" style="border-left-color:' + p.color + '"><div class="pn" style="color:' + p.color + '">' + p.name + '</div><div class="pd">' + p.desc + '</div><div style="cursor:pointer;font-size:0.78em;color:#2980b9" onclick="tg(\\'sn_ps' + i + '\\')">查看对话场景 +</div><div class="snip" id="sn_ps' + i + '">';
+    for(var j=0;j<convs.length;j++){
+      h += '<div class="conv-seg"><div class="label" style="color:' + p.color + '">📌 会话片段 ' + (NUM[j]||'') + '</div>' + convs[j] + '</div>';
+    }
+    h += '</div></div>';
+  }
+  h += '</div></div>';
+
+  // == 冷知识 ==
+  var tips = [['🎫 兑换码','VIP666 / VIP777 / VIP888'],['🔑 暗号口令','"阿爹笑，拍我腰，男儿立志在远方"'],['🎯 前期策略','集中养1个主力，优先全属性+词条'],['⚡ 资质玄学','别连点，点一次退出来等会儿再点'],['🏠 10连采集','宗门8级解锁10连，不用月卡'],['⚔️ 国战规则','1人控1个修士，死了可满血重进'],['🏆 传功位置','宗祠→NPC王长生，创角24小时'],['📖 解锁小天师','先看完剧情才能抽皮肤']];
+  h += '<div class="se"><h2>💡 游戏冷知识</h2><div class="tg">';
+  for(var i=0;i<tips.length;i++){
+    h += '<div class="ti"><div class="tl">' + tips[i][0] + '</div><div class="tc">' + tips[i][1] + '</div></div>';
+  }
+  h += '</div></div>';
+
+  // == 数据洞察 ==
+  h += '<div class="se"><h2>📊 数据洞察</h2><div class="ig">';
+  // 风险
+  h += '<div style="background:#f8fafc;border-radius:10px;padding:12px;border:1px solid rgba(230,57,70,0.2)"><h3 style="font-size:0.85em;margin-bottom:8px;color:#E63946">🚨 主要风险项</h3>';
+  for(var i=0;i<d.risks.length;i++){
+    var r = d.risks[i];
+    var convs = d.riskConvs[r.id]||[];
+    h += '<div class="ri"><div class="rh" onclick="tg(\\'sn_r' + i + '\\')"><div class="rt" style="color:' + r.color + '">🔴 ' + r.title + '</div><span class="btn" data-target="sn_r' + i + '" style="background:' + r.color + '22;color:' + r.color + ';width:20px;height:20px;font-size:14px">+</span></div><div class="rd">📋 ' + r.desc + '</div><div class="snip" id="sn_r' + i + '">';
+    for(var j=0;j<convs.length;j++){
+      h += '<div class="conv-seg"><div class="label" style="color:#E63946">📌 会话片段 ' + (NUM[j]||'') + '</div>' + convs[j] + '</div>';
+    }
+    h += '</div></div>';
+  }
+  h += '</div>';
   // 可取之处
-  h += `<div style="background:#f8fafc;border-radius:10px;padding:12px;border:1px solid rgba(42,157,143,0.2)">
-    <h3 style="font-size:0.85em;margin-bottom:8px;color:#2A9D8F">✅ 可取之处</h3>`;
-  d.goods.forEach(g => {
-    const convs = d.goodConvs[g.id] || [];
-    h += `<div class="risk-item">
-      <div class="rh" onclick="tg('good_${g.id}')">
-        <div class="rt" style="color:${g.color}">🟢 ${g.title}</div>
-        <div class="re" id="b_good_${g.id}" style="background:${g.color}22;color:${g.color}">+</div></div>
-      <div class="snips" id="good_${g.id}">${convs.map((c,i)=>`<div style="margin-bottom:6px;background:#fafbfc;border-radius:6px;padding:6px"><div style="font-size:0.78em;font-weight:600;color:#2A9D8F;margin-bottom:3px">📌 会话片段 ${NUM_CN[i]||""}</div>${c}</div>`).join("")}</div></div>`;
-      <div class="snips" id="good_${g.id}">${convs.map((c,i)=>`<div class="ctx hl"><span class="num" style="background:#2A9D8F">${NUM_CN[i]||''}</span>${c}</div>`).join('')}</div></div>`;
-  });
-  h += `</div></div></div>`;
+  h += '<div style="background:#f8fafc;border-radius:10px;padding:12px;border:1px solid rgba(42,157,143,0.2)"><h3 style="font-size:0.85em;margin-bottom:8px;color:#2A9D8F">✅ 可取之处</h3>';
+  for(var i=0;i<d.goods.length;i++){
+    var g = d.goods[i];
+    var convs = d.goodConvs[g.id]||[];
+    h += '<div class="ri"><div class="rh" onclick="tg(\\'sn_g' + i + '\\')"><div class="rt" style="color:' + g.color + '">🟢 ' + g.title + '</div><span class="btn" data-target="sn_g' + i + '" style="background:' + g.color + '22;color:' + g.color + ';width:20px;height:20px;font-size:14px">+</span></div><div class="rd">📋 ' + g.desc + '</div><div class="snip" id="sn_g' + i + '">';
+    for(var j=0;j<convs.length;j++){
+      h += '<div class="conv-seg"><div class="label" style="color:#2A9D8F">📌 会话片段 ' + (NUM[j]||'') + '</div>' + convs[j] + '</div>';
+    }
+    h += '</div></div>';
+  }
+  h += '</div></div></div>';
 
-  h += `<div class="footer"><p>📊 NapCatQQ 群聊记录 · 数据驱动生成</p></div>`;
-  document.getElementById('app').innerHTML = h;
+  h += '<div class="footer"><p>📊 NapCatQQ 群聊记录 · 数据驱动生成</p></div>';
+
+  byId('app').innerHTML = h;
 }
 
-function renderPersonList(kwPeople, idx){
-  const items = kwPeople[idx] || [];
-  return items.map((item, pi) => {
-    const msgs = item.msgs || [];
-    return `<div class="person-item" onclick="tg('pm_${idx}_${pi}')">
-      <span class="pn">${item.user}</span>
-      <span class="pc">${msgs.length}条消息 <span style="color:#2980b9">+</span></span></div>
-      <div class="person-msgs" id="pm_${idx}_${pi}">${
-        msgs.map(m => `<div class="pm">${m}</div>`).join('')
-      }</div>`;
-  }).join('');
-}
-
+// tg函数（全局）
 function tg(id){
-  const el = document.getElementById(id);
-  const btn = document.getElementById('b_'+id);
-  if(el) el.classList.toggle('open');
-  if(btn) btn.classList.toggle('on');
+  var el = byId(id);
+  if(el) el.classList.toggle('on');
+  var btns = document.querySelectorAll('[data-target="' + id + '"]');
+  for(var i=0;i<btns.length;i++) btns[i].classList.toggle('rot');
 }
 </script>
 <script>
-// 数据注入点 - 会被替换
-const REPORT_DATA = {"totalMsgs": 600, "totalUsers": 35, "hourly": {"18": 278, "19": 153, "20": 107, "21": 28, "22": 25, "23": 9}, "topUsers": [["雍和", 119], ["●。樹o、", 60], ["123", 58], ["朗朗", 58], ["佩恩没pain", 57], ["张某人🌳️🌳️", 35]], "topicConvs": {"t1": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[123] 嘻嘻</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 快开传功功能吧</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 求求了</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[雍和] 太累了，我还玩大道仙途</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 开服第一天无限传功不行吗</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 高资质的没资源养</div>"], "t2": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[朗朗] 炼化那边才是</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [123] 他0氪</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [123] 他0氪</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[123] 他0氪</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [123] 他0氪</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [123] 我也1万多点</div>"], "t3": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[●。樹o、] 其实也不会被暴打啦，因为初始资质影响的是满资质的上限，现在大家应该都没到上限吧</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [哟哟] 现在主要是国战是怎么个打法</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [朗朗] 万一过了一天发现不是张明怀，你要破防</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[●。樹o、] 不过一分说得传功限制这个事情，我们等会就把时间改掉先</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [朗朗] 我也是你大唐的子民</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [朗朗] 我也是你大唐的子民</div>"], "t4": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[佩恩没pain] 硬卡着太难受了</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [雍和] 就第一天自己多肝一下，后面基本都挂机，你自己玩吧</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [哟哟] 你在大道哪个区呀</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[朗朗] 国战指着他</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [张某人🌳️🌳️] 自动战斗应该整个不充钱的。</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [张某人🌳️🌳️] 自动战斗应该整个不充钱的。</div>"], "t5": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[哟哟] 确实抠门。。。</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [哟哟] 大道仙途，每次更新给588仙玉</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [哟哟] 大道仙途，每次更新给588仙玉</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[哟哟] 大道仙途，每次更新给588仙玉</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [哟哟] 大道仙途，每次更新给588仙玉</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [小竹] 希望日后能给些福利吧…</div>"]}, "fbConvs": {"fb1": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[123] 嘻嘻</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 快开传功功能吧</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 求求了</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[雍和] 太累了，我还玩大道仙途</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 开服第一天无限传功不行吗</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 高资质的没资源养</div>"], "fb2": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[佩恩没pain] 硬卡着太难受了</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [雍和] 就第一天自己多肝一下，后面基本都挂机，你自己玩吧</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [哟哟] 你在大道哪个区呀</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[朗朗] 国战指着他</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [张某人🌳️🌳️] 自动战斗应该整个不充钱的。</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [张某人🌳️🌳️] 自动战斗应该整个不充钱的。</div>"], "fb3": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[哟哟] 确实抠门。。。</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [哟哟] 大道仙途，每次更新给588仙玉</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [哟哟] 大道仙途，每次更新给588仙玉</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[哟哟] 大道仙途，每次更新给588仙玉</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [哟哟] 大道仙途，每次更新给588仙玉</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [小竹] 希望日后能给些福利吧…</div>"], "fb4": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[●。樹o、] 其实也不会被暴打啦，因为初始资质影响的是满资质的上限，现在大家应该都没到上限吧</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [哟哟] 现在主要是国战是怎么个打法</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [朗朗] 万一过了一天发现不是张明怀，你要破防</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[●。樹o、] 不过一分说得传功限制这个事情，我们等会就把时间改掉先</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [朗朗] 我也是你大唐的子民</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [朗朗] 我也是你大唐的子民</div>"], "fb5": ["<div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">[雍和] 灵兽怎么获得呀，灵兽峰给的是衣服？</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [陌云] 涂山</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[坟] 充钱获得的。</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [坟] 还是怎么获得的</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [坟] 还是怎么获得的</div>"]}, "riskConvs": {"r1": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[123] 嘻嘻</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 快开传功功能吧</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 求求了</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[雍和] 太累了，我还玩大道仙途</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 开服第一天无限传功不行吗</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 高资质的没资源养</div>"], "r2": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[佩恩没pain] 硬卡着太难受了</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [雍和] 就第一天自己多肝一下，后面基本都挂机，你自己玩吧</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [哟哟] 你在大道哪个区呀</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[朗朗] 国战指着他</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [张某人🌳️🌳️] 自动战斗应该整个不充钱的。</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [张某人🌳️🌳️] 自动战斗应该整个不充钱的。</div>"], "r3": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[哟哟] 确实抠门。。。</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [哟哟] 大道仙途，每次更新给588仙玉</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [哟哟] 大道仙途，每次更新给588仙玉</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[哟哟] 大道仙途，每次更新给588仙玉</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [哟哟] 大道仙途，每次更新给588仙玉</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [小竹] 希望日后能给些福利吧…</div>"], "r4": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[●。樹o、] 不过一分说得传功限制这个事情，我们等会就把时间改掉先</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [朗朗] 我也是你大唐的子民</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [朗朗] 我也是你大唐的子民</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[朗朗] 我也是你大唐的子民</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [朗朗] 我也是你大唐的子民</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 点赞</div>"]}, "goodConvs": {"g1": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[朗朗] 你看准点再传</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [●。樹o、] 不过一分说得传功限制这个事情，我们等会就把时间改掉先</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [●。樹o、] 不过一分说得传功限制这个事情，我们等会就把时间改掉先</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[●。樹o、] 不过一分说得传功限制这个事情，我们等会就把时间改掉先</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [●。樹o、] 不过一分说得传功限制这个事情，我们等会就把时间改掉先</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [朗朗] 我也是你大唐的子民</div>"], "g2": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[佩恩没pain] 真没必要做限制</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [王孝语] 今日更新计划：</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [王孝语] 今日更新计划：</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[王孝语] 今日更新计划：</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [王孝语] 今日更新计划：</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [雾随雨落] 一次真得改掉，太少了，玩家没那么有耐心的</div>"], "g3": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[哟哟] 你在大道哪个区呀</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [离经易道] 暗号是什么</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [离经易道] 暗号是什么</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[离经易道] 暗号是什么</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [离经易道] 暗号是什么</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [雾随雨落] 你零氪咋玩这么高的</div>"]}, "psychConvs": {"损失厌恶（付费焦虑）": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[朗朗] 炼化那边才是</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [123] 他0氪</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [123] 他0氪</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[123] 他0氪</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [123] 他0氪</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [123] 我也1万多点</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[雍和] 差挺多，不知道够不够</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [坟] 充钱获得的。</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [坟] 还是怎么获得的</div>"], "挫败感（难度曲线）": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[123] 我也1万多点</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [雍和] 可惜我乱升级不能突破元婴了</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [雍和] 可惜我乱升级不能突破元婴了</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[雍和] 可惜我乱升级不能突破元婴了</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [雍和] 可惜我乱升级不能突破元婴了</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [123] 我差一个煮鸡蛋</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[佩恩没pain] 高资质的没资源养</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 硬卡着太难受了</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 硬卡着太难受了</div>"], "公平感知（机制质疑）": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[佩恩没pain] 但你们弄这1个赛季只能传一次</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 不是纯纯恶心玩家吗</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [人] 如果零颗的话，养哪个角色好啊？</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[张某人🌳️🌳️] 自动战斗应该整个不充钱的。</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [贰佰\"] 10连采集要月卡 确实离谱 很全退</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [张某人🌳️🌳️] 太费时间了</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[雍和] 最强的不是年卡的吗？我看第一第二都养那个的</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [贰佰\"] 10连采集要月卡 确实离谱 很劝退人</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [贰佰\"] 10连采集要月卡 确实离谱 很劝退人</div>"], "社交需求（归属感）": ["<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[哥斯拉不说话] 我已经想用ai帮我点了</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 肯定优先传给带➕全属性词条的啊</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 肯定优先传给带➕全属性词条的啊</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[佩恩没pain] 肯定优先传给带➕全属性词条的啊</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [佩恩没pain] 肯定优先传给带➕全属性词条的啊</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [●。樹o、] 是的，两个国家的玩家互相打~</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[佩恩没pain] 张明怀和江剑臣</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [哟哟] 怎么打，是自己安排角色一个人？还是几个角色组队？</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [哟哟] 如果安排一个人，就养一个，如果是组队那种就得几乎全养</div>"], "信息焦虑（引导不足）": ["<div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">[雍和] 灵兽怎么获得呀，灵兽峰给的是衣服？</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [陌云] 涂山</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[坟] 充钱获得的。</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [坟] 还是怎么获得的</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [坟] 还是怎么获得的</div>", "<div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">[坟] 还是怎么获得的</div><div style=\"font-size:0.82em;color:#4b5563;background:#f0f5ff;font-weight:500;color:#1a56db;padding:2px 8px;border-radius:4px\">… [坟] 还是怎么获得的</div><div style=\"font-size:0.82em;color:#4b5563;;padding:2px 8px;border-radius:4px\">… [雍和] 差五个筑基丹</div>"]}, "kwPeople": {"传功/养成": [{"user": "雍和", "msgs": ["我只有绿色灵兽，我招降了元婴丹是衣服", "可惜我乱升级不能突破元婴了", "可惜我乱升级不能突破元婴了", "差五个筑基丹", "这个是等级丹药加成最多", "资质差不了太多吧", "最强的不是年卡的吗？我看第一第二都养那个的", "最强的不是年卡的吗？我看第一第二都养那个的", "那个第一要被你超了，他养错了", "他养的年卡的", "那养一个就行了", "八点，1000贡献只能换3个筑基丹，我元婴不了了", "一分不充重回榜一了，明天能传功应该能甩掉第二一大截了", "我金丹的时候别人拉我的", "我金丹的时候别人拉我的", "养一个不行了", "养一个不行了", "完了，我才搞明白资质，主角太拉了", "提高不了，他是15资质说明每次升级提升十五天，20资质就是每次20点", "提高不了，他是15资质说明每次升级提升十五天，20资质就是每次20点", "明天能转生了，可以换到高资质", "明天能转生了，可以换到高资质"]}, {"user": "佩恩没pain", "msgs": ["快开传功功能吧", "开服第一天无限传功不行吗", "高资质的没资源养", "能不能开服第一天无限传功", "导致给的高资质角色没资源养", "导致给的高资质角色没资源养", "就因为他养的高资质修士", "关键是既然有传功这个功能就彻底开放出来啊", "你们这个游戏有传功这个功能非常加分", "今天就把传功功能开放吧", "他们知道暗号的全都养张明怀", "他们知道暗号的全都养张明怀", "我们辛辛苦苦养的低品质修士让人家提前知道暗号的暴打"]}, {"user": "●。樹o、", "msgs": ["传功主要是想要降低玩家的试错成本，如果改成无限次对游戏的影响会很大，所以次数要是要限制下的", "其实也不会被暴打啦，因为初始资质影响的是满资质的上限，现在大家应该都没到上限吧", "不过一分说得传功限制这个事情，我们等会就把时间改掉先", "不过一分说得传功限制这个事情，我们等会就把时间改掉先", "你想要传功给谁啊？", "每日颁布政令、校场打统帅，饷银培养队伍都可以得贡献", "你把自己元婴修士去别人家论道了？", "举办论道要元婴修士，但是参与论道只要满足参与条件就可以，不论境界", "可以用筑基丹合成", "可以用筑基丹合成"]}, {"user": "朗朗", "msgs": ["所以大佬你想传功给哪位到底", "为啥要养张明怀啊", "为啥要养张明怀啊", "策划建议养哪个", "策划建议养哪个", "改成付费传功会不会好点", "改成付费传功会不会好点"]}, {"user": "123", "msgs": ["修炼属性有什么用啊", "我主要升资质太黑了", "我主要升资质太黑了", "修炼属性有什么用啊"]}], "氪金/付费": [{"user": "123", "msgs": ["他0氪", "他0氪", "你又充啦？", "一天充2000就够啦，明天再氪1000", "一天充2000就够啦，明天再氪1000", "刚才还说不充的", "刚才还说不充的", "我还氪了6块钱", "我还氪了6块钱", "榜一充5000了吧", "榜一充5000了吧", "我怎么还没有那个抽皮肤啊", "我怎么还没有那个抽皮肤啊", "抽皮肤的，要多少关吧"]}, {"user": "雍和", "msgs": ["明天再氪二千，现在氪三千浪费了", "明天再氪二千，现在氪三千浪费了", "明天再氪，不要上头，一天二千，3天绝对第一了", "不行就五天氪一万", "那你赶紧氪，可以追一波", "那你赶紧氪，可以追一波", "一分不充重回榜一了，明天能传功应该能甩掉第二一大截了", "那你玩错了，你有抽那个皮肤吗？小天师皮肤不抽，很难赶上他，全属性加百分之十", "我没钱，不然我充了", "我没钱，不然我充了", "氪金或者合成"]}, {"user": "雾随雨落", "msgs": ["你零氪咋玩这么高的", "你零氪咋玩这么高的", "0氪差不多就在两百万左右", "0氪差不多就在两百万左右", "氪那六块钱其实没多大差别", "氪那六块钱其实没多大差别", "首充那98的礼包开服有点优势", "我0氪啊", "不充钱，要充的话太多了，充一点感觉不如不充", "不充钱，要充的话太多了，充一点感觉不如不充"]}, {"user": "佩恩没pain", "msgs": ["不明白为什么要让充钱的和不充钱的都玩不爽", "不明白为什么要让充钱的和不充钱的都玩不爽", "那我再充一千", "那我再充一千", "我直接充到榜一", "我又充了三千", "我又充了三千", "我充的比榜一多，资源比榜一多", "我充的比榜一多，资源比榜一多", "充钱的也开心，不充钱的也开心"]}, {"user": "●。樹o、", "msgs": ["怎么会浪费嘞，累计充值的挡位是活动累计的呀", "怎么会浪费嘞，累计充值的挡位是活动累计的呀", "这个是每日充值，都是根据当天充值来解锁，所以是可以重复领的", "这个是每日充值，都是根据当天充值来解锁，所以是可以重复领的", "你是说没解锁抽小天师的活动是么", "你是说没解锁抽小天师的活动是么"]}], "战斗/国战": [{"user": "●。樹o、", "msgs": ["其实也不会被暴打啦，因为初始资质影响的是满资质的上限，现在大家应该都没到上限吧", "是的，两个国家的玩家互相打~", "是的，两个国家的玩家互相打~", "1人控1个修士参战", "每日颁布政令、校场打统帅，饷银培养队伍都可以得贡献", "等国战开了，打国战也有贡献", "等国战开了，打国战也有贡献", "国战会用到哦", "别急别急，国战都还没开嘞", "到点打长春观啦~~"]}, {"user": "朗朗", "msgs": ["国战指着他", "除非以后有攻略大家都知道谁强", "除非以后有攻略大家都知道谁强", "打BOSS了"]}, {"user": "张某人🌳️🌳️", "msgs": ["自动战斗应该整个不充钱的。", "自动战斗应该整个不充钱的。", "自动打地图，应该降肝", "自动打地图，应该降肝"]}, {"user": "123", "msgs": ["国战会不会就像打小怪那样一群人打", "国战会不会就像打小怪那样一群人打", "然后大佬一个打10个", "这样打架就是年卡英雄厉害，冲榜是张明怀厉害"]}, {"user": "道临♞℡", "msgs": ["这国战没选唐的都麻了", "这国战没选唐的都麻了", "国战要均衡啊，选阵营的时候", "国战要均衡啊，选阵营的时候"]}]}, "topics": [{"id": "t1", "title": "传功限制争议", "color": "#E63946", "tags": ["付费体验", "系统设计", "氪佬"], "desc": "佩恩没pain（氪金~4000+）强烈要求无限传功，资源全给主角后发现高资质角色没资源养。群管已调整为创角24小时后可传功。", "kws": ["传功", "无限", "次数"]}, {"id": "t2", "title": "充值竞争与排行榜", "color": "#F4A261", "tags": ["付费点", "排行榜", "数值"], "desc": "榜一约充5000+，榜二约2000+。佩恩想冲榜一但因养错角色战力不及。", "kws": ["充", "氪", "榜", "5000"]}, {"id": "t3", "title": "国战系统初体验", "color": "#2A9D8F", "tags": ["国战", "平衡", "活动设计"], "desc": "20:04开放长春观BOSS活动，大唐一国独大，另外两国玩家表示麻了。", "kws": ["国战", "长春", "大唐", "麻了"]}, {"id": "t4", "title": "肝度与自动化争议", "color": "#E76F51", "tags": ["肝度", "付费墙", "体验"], "desc": "自动战斗需月卡，10连采集也要月卡被吐槽离谱。陌云表示在思考方案了。", "kws": ["肝", "自动", "月卡", "扫荡"]}, {"id": "t5", "title": "概率/数值信任危机", "color": "#9B59B6", "tags": ["概率公示", "信任", "数值"], "desc": "贰佰20多次论道全出最低奖励88，质疑概率。修炼资质升级失败率高。", "kws": ["概率", "88", "论道", "失败"]}], "feedbacks": [{"id": "fb1", "emoji": "🔴", "issue": "传功次数太少", "status": "✅ 群管已响应：创角24小时即可传功", "count": 24, "kws": ["传功", "次数"]}, {"id": "fb2", "emoji": "🔴", "issue": "游戏太肝，缺乏自动化", "status": "⏳ 陌云\"在思考方案\"", "count": 15, "kws": ["肝", "自动", "月卡"]}, {"id": "fb3", "emoji": "🟡", "issue": "论道奖励概率存疑", "status": "⚠️ 群管称概率没问题但玩家不信", "count": 19, "kws": ["论道", "88", "概率"]}, {"id": "fb4", "emoji": "🟡", "issue": "国战平衡堪忧", "status": "大唐一国独大", "count": 22, "kws": ["国战", "大唐", "麻了"]}, {"id": "fb5", "emoji": "🟡", "issue": "无活动日历/基础攻略", "status": "功能入口难找", "count": 12, "kws": ["攻略", "怎么", "入口"]}], "risks": [{"id": "r1", "title": "氪金大R佩恩养错角色体验差", "color": "#E63946", "kws": ["佩恩", "传功", "资源养", "难受"], "desc": "佩恩开服即氪金~4000+，将全部资源投入主角后发现高资质门客无资源培养，要求无限传功被拒。虽已调整创角24小时可传功，但佩恩追加充值3000后仍表示体验差。"}, {"id": "r2", "title": "肝度劝退泛用户流失", "color": "#E63946", "kws": ["肝", "自动", "月卡", "劝退"], "desc": "开服当晚张某人、贰佰、雍和等多名玩家先后提出太肝质疑。自动战斗锁月卡、10连采集锁月卡触发集中吐槽。运营仅回应陌云在思考方案，无具体时间表。"}, {"id": "r3", "title": "概率信任危机", "color": "#E63946", "kws": ["概率", "88", "失败"], "desc": "贰佰多次论道全出最低奖励88，公开质疑概率。群管表示后台数据正常但玩家不信。叠加资质升级4连失败案例，信任度持续走低。"}, {"id": "r4", "title": "三国阵营平衡隐患", "color": "#E63946", "kws": ["大唐", "麻了", "一国"], "desc": "国战选阵营阶段大部分玩家集中选择大唐，弱势阵营玩家活跃度下降明显。"}], "goods": [{"id": "g1", "title": "群管群内实时回应", "color": "#2A9D8F", "kws": ["●。樹o、", "调整", "改掉"], "desc": "传功时间限制问题提出后，群管樹o、当天即回应并推动调整为创角24小时。玩家佩恩因此追加充值3000。"}, {"id": "g2", "title": "首日更新响应快", "color": "#2A9D8F", "kws": ["更新", "修复", "加速"], "desc": "关卡动画加速3倍、传功时间缩短均在首日完成更新。"}, {"id": "g3", "title": "暗号兑换制造话题", "color": "#2A9D8F", "kws": ["暗号", "阿爹笑"], "desc": "\"阿爹笑，拍我腰，男儿立志在远方\"暗号在群内引发讨论和传播。"}], "psychs": [{"name": "损失厌恶（付费焦虑）", "color": "#e74c3c", "kws": ["月卡", "氪", "充钱", "付费"], "desc": "玩家对自动战斗和10连采集捆绑月卡产生抵触——不是不愿付费，而是感到\"被强迫\"。免费功能的缺失放大了损失感知。"}, {"name": "挫败感（难度曲线）", "color": "#e67e22", "kws": ["难", "打不过", "失败", "突破"], "desc": "金丹→元婴阶段的突破失败率高，连点4次全失败的案例让玩家产生\"努力无回报\"的习得性无助。"}, {"name": "公平感知（机制质疑）", "color": "#9b59b6", "kws": ["离谱", "恶心", "机制"], "desc": "玩家对概率、国战阵营分配等机制产生不公感——论道20多次全出最低值，强化了\"系统有问题\"的认知。"}, {"name": "社交需求（归属感）", "color": "#27ae60", "kws": ["加好友", "一起", "组队", "带"], "desc": "玩家通过暗号兑换、国战阵营选择、攻略互助等方式寻求社交连接。群内管理员的及时回应形成了初步的社群归属。"}, {"name": "信息焦虑（引导不足）", "color": "#3498db", "kws": ["攻略", "怎么", "哪里", "不懂"], "desc": "大量重复提问（灵兽怎么获得、国战怎么打、角色怎么养）说明新手引导存在明显缺口，玩家处于\"不知道该干嘛\"的状态。"}]};
-D = REPORT_DATA; render();
+RD = {"totalMsgs":600,"totalUsers":35,"hourly":{"18":278,"19":153,"20":107,"21":87,"22":91,"23":60},"topUsers":[["雍和",88],["123",40],["佩恩没pain",40],["雾随雨落",19],["●。樹o、",41],["朗朗",40]],"topicConvs":{"t1":[],"t2":[],"t3":[],"t4":[],"t5":[]},"fbConvs":{"fb1":[],"fb2":[],"fb3":[],"fb4":[],"fb5":[]},"riskConvs":{"r1":[],"r2":[],"r3":[],"r4":[]},"goodConvs":{"g1":[],"g2":[],"g3":[]},"psychConvs":{"损失厌恶（付费焦虑）":[],"挫败感（难度曲线）":[],"公平感知（机制质疑）":[],"社交需求（归属感）":[],"信息焦虑（引导不足）":[]},"kwPeople":[[],[],[]],"topics":[{"id":"t1","title":"传功限制争议","color":"#E63946","tags":["付费体验","系统设计","氪佬"],"desc":"佩恩没pain（氪金~4000+）强烈要求无限传功，资源全给主角后发现高资质角色没资源养。群管已调整为创角24小时后可传功。","kws":["传功","无限","次数"]},{"id":"t2","title":"充值竞争与排行榜","color":"#F4A261","tags":["付费点","排行榜","数值"],"desc":"榜一约充5000+，榜二约2000+。佩恩想冲榜一但因养错角色战力不及。","kws":["充","氪","榜","5000"]},{"id":"t3","title":"国战系统初体验","color":"#2A9D8F","tags":["国战","平衡","活动设计"],"desc":"20:04开放长春观BOSS活动，大唐一国独大，另外两国玩家表示麻了。","kws":["国战","长春","大唐","麻了"]},{"id":"t4","title":"肝度与自动化争议","color":"#E76F51","tags":["肝度","付费墙","体验"],"desc":"自动战斗需月卡，10连采集也要月卡被吐槽离谱。陌云表示在思考方案了。","kws":["肝","自动","月卡","扫荡"]},{"id":"t5","title":"概率/数值信任危机","color":"#9B59B6","tags":["概率公示","信任","数值"],"desc":"贰佰20多次论道全出最低奖励88，质疑概率。修炼资质升级失败率高。","kws":["概率","88","论道","失败"]}],"feedbacks":[{"id":"fb1","emoji":"🔴","issue":"传功次数太少","status":"✅ 群管已响应：创角24小时即可传功","count":24,"kws":["传功","次数"]},{"id":"fb2","emoji":"🔴","issue":"游戏太肝，缺乏自动化","status":"⏳ 陌云在思考方案","count":15,"kws":["肝","自动","月卡"]},{"id":"fb3","emoji":"🟡","issue":"论道奖励概率存疑","status":"⚠️ 群管称概率没问题但玩家不信","count":19,"kws":["论道","88","概率"]},{"id":"fb4","emoji":"🟡","issue":"国战平衡堪忧","status":"大唐一国独大","count":22,"kws":["国战","大唐","麻了"]},{"id":"fb5","emoji":"🟡","issue":"无活动日历/基础攻略","status":"功能入口难找","count":12,"kws":["攻略","怎么","入口"]}],"risks":[{"id":"r1","title":"氪金大R佩恩养错角色体验差","color":"#E63946","kws":["佩恩","传功","资源养","难受"],"desc":"佩恩开服即氪金~4000+，将全部资源投入主角后发现高资质门客无资源培养，要求无限传功被拒。虽已调整创角24小时可传功，但佩恩追加充值3000后仍表示体验差。"},{"id":"r2","title":"肝度劝退泛用户流失","color":"#E63946","kws":["肝","自动","月卡","劝退"],"desc":"开服当晚张某人、贰佰、雍和等多名玩家先后提出太肝质疑。自动战斗锁月卡、10连采集锁月卡触发集中吐槽。运营仅回应陌云在思考方案，无具体时间表。"},{"id":"r3","title":"概率信任危机","color":"#E63946","kws":["概率","88","失败"],"desc":"贰佰多次论道全出最低奖励88，公开质疑概率。群管表示后台数据正常但玩家不信。叠加资质升级4连失败案例，信任度持续走低。"},{"id":"r4","title":"三国阵营平衡隐患","color":"#E63946","kws":["大唐","麻了","一国"],"desc":"国战选阵营阶段大部分玩家集中选择大唐，弱势阵营玩家活跃度下降明显。"}],"goods":[{"id":"g1","title":"群管群内实时回应","color":"#2A9D8F","kws":["●。樹o、","调整","改掉"],"desc":"传功时间限制问题提出后，群管樹o、当天即回应并推动调整为创角24小时。玩家佩恩因此追加充值3000。"},{"id":"g2","title":"首日更新响应快","color":"#2A9D8F","kws":["更新","修复","加速"],"desc":"关卡动画加速3倍、传功时间缩短均在首日完成更新。"},{"id":"g3","title":"暗号兑换制造话题","color":"#2A9D8F","kws":["暗号","阿爹笑"],"desc":"阿爹笑拍我腰男儿立志在远方暗号在群内引发讨论和传播。"}],"psychs":[{"name":"损失厌恶（付费焦虑）","color":"#e74c3c","kws":["月卡","氪","充钱","付费"],"desc":"玩家对自动战斗和10连采集捆绑月卡产生抵触——不是不愿付费，而是感到被强迫。免费功能的缺失放大了损失感知。"},{"name":"挫败感（难度曲线）","color":"#e67e22","kws":["难","打不过","失败","突破"],"desc":"金丹→元婴阶段突破失败率高，连点4次全失败的案例让玩家产生努力无回报的习得性无助。"},{"name":"公平感知（机制质疑）","color":"#9b59b6","kws":["离谱","恶心","机制"],"desc":"玩家对概率、国战阵营分配等机制产生不公感——论道20多次全出最低值，强化了系统有问题的认知。"},{"name":"社交需求（归属感）","color":"#27ae60","kws":["加好友","一起","组队","带"],"desc":"玩家通过暗号兑换、国战阵营选择、攻略互助等方式寻求社交连接。群内管理员的及时回应形成了初步的社群归属。"},{"name":"信息焦虑（引导不足）","color":"#3498db","kws":["攻略","怎么","哪里","不懂"],"desc":"大量重复提问（灵兽怎么获得、国战怎么打、角色怎么养）说明新手引导存在明显缺口，玩家处于不知道该干嘛的状态。"}]};
+render();
 </script>
 </body>
 </html>
